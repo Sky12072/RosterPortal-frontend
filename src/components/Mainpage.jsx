@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Main page is the landing page. In this, we go to other pages.
+
 export default function EmployerPage () {
     return (
         <div>
