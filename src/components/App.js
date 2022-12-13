@@ -8,6 +8,7 @@ import { StateContext } from "../utils/stateContext";
 import Signup from "./Signup";
 import reducer from "../utils/stateReducer"
 import Signin from "./Signin";
+import Signout from "./Signout";
 
 function App() {
   const initialState = {
@@ -16,6 +17,7 @@ function App() {
     adminUser: sessionStorage.getItem("user") || null,
     auth: sessionStorage.getItem("token") || null,
   }
+
   const [store, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -32,6 +34,7 @@ function App() {
 
         <Route path="/employer" element={<EmployerPage />} />
         <Route path="/employee" element={<EmployeePage />} />
+        <Route path="/signedout" element={<Signout />} />
         
       </Routes>
       </StateContext.Provider>

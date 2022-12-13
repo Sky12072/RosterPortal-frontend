@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Main page is the landing page. In this, we go to other pages.
 
-export default function EmployerPage () {
+export default function Mainpage () {
     return (
         <div>
            <h1>Welcome to Main Page</h1>
