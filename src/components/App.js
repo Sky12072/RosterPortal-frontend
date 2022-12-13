@@ -7,6 +7,7 @@ import EmployeePage from "./EmployeePage";
 import { StateContext } from "../utils/stateContext";
 import Signup from "./Signup";
 import reducer from "../utils/stateReducer"
+import Signin from "./Signin";
 
 function App() {
   const initialState = {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Mainpage />} />
         {/* This signup path is allocating url path for signup component, not the signup button */}
         <Route path='/signup' element={<Signup />}/>
+        <Route path='/signin' element={<Signin />}/>
 
         <Route path="/employer" element={<EmployerPage />} />
         <Route path="/employee" element={<EmployeePage />} />
