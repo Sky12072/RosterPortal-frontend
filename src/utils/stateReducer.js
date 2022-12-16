@@ -46,6 +46,12 @@ export default function reducer (state, action) {
 					token: action.data
 				}
 			}
+        }
+        case 'setUserClaims': {
+            return {
+                ...state,
+                userClaims: action.data
+            }
 		}
 		default: return state
 	}

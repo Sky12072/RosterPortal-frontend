@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}from "react";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Stack, Button, Toolbar, Box, Container } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -8,7 +8,7 @@ import { logoutUser } from "../services/authServices";
 
 export default function Nav() {
 
-    let navigate = useNavigate();
+    
 
     const theme = createTheme({
         palette: {
@@ -19,14 +19,18 @@ export default function Nav() {
         },
     });
 
+    let navigate = useNavigate();
     const {store, dispatch} = useGlobalState();
     const {loggedInUser, auth} = store
 
+    // Nav buttons useState
+    const [state, setState] = useState(false)
+
     function handleSignOut(event) {
 		event.preventDefault()
-        console.log('loggedinUser1: ', loggedInUser)
-       
+        console.log('loggedinUser1: ', loggedInUser)       
         console.log('user Token1: ', auth.token)
+        
 		logoutUser(loggedInUser)
 		.then((data) => {
             let displayName = data.displayName;
@@ -40,12 +44,31 @@ export default function Nav() {
             console.log('user Token2: ', token)
             navigate('/signedout')
 		})
-        console.log('loggedinUser3: ', loggedInUser)
-      
+        console.log('loggedinUser3: ', loggedInUser)      
         console.log('user Token3: ', auth.token)
 	}
 
+    function changeButton(event) {
+        event.preventDefault()
+        setState(prevState => !prevState)
+        console.log("Button Clicked")
+        console.log(event.target.name)
+        switch(event.target.name){
+            case 'home':
+                navigate('/')
+                console.log("Navigate to home page")
+                break;
+            case 'about':
+                navigate('/about')
+                console.log("Navigate to about page")
+                break;
+        
+        }
+            
+        
+        
 
+    }
     
 
     return (
@@ -55,11 +78,12 @@ export default function Nav() {
             
                 {/* <Box maxWidth="lg"> */}
                     <Stack direction='row' spacing={2}>
+                        <Button color = 'inherit' name='home' onClick={changeButton}>Home</Button>
+                        <Button color='inherit' name='about' onClick={changeButton} >About</Button>
                         {loggedInUser && loggedInUser !== 'undefined' ? 
                         <>
 
-                        <Button onClick={() => navigate('/')} color='inherit' href="/">Home</Button>
-                        <Button color='inherit' >About</Button>
+                        
                         
                             
                         <Button variant="contained" color='primary' onClick={handleSignOut}>Sign Out</Button>
@@ -73,8 +97,7 @@ export default function Nav() {
 
                         <>
 
-                        <Button onClick={() => navigate('/')} color='inherit' >Home</Button>
-                        <Button color='inherit' href="/">About</Button>
+                        
                         
                             
                         <Button variant="contained" color='primary' onClick={() => navigate('/signup')}>Sign Up</Button>

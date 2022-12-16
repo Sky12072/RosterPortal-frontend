@@ -24,7 +24,9 @@ export default function Signin() {
 		password: ''
 	}
 	const [formState, setFormState] = useState(initialFormState)
-	const {dispatch} = useGlobalState()
+
+	const {store, dispatch} = useGlobalState()
+
     let navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -35,36 +37,43 @@ export default function Signin() {
     }
 
 
+    // const auth = getAuth(db);
+    // console.log('Auth is: ', auth)
+
     const handleSubmit = (event) => {
         event.preventDefault();
         loginUser(formState).then((data) => {
             let displayName = data.displayName;
-            let token = data.token;
-            sessionStorage.setItem("token", token);
-            sessionStorage.setItem("user", displayName);
-            console.log('displayName2: ', displayName)
-            console.log('user Token2: ', token)
+            let token = data.idToken;
+            let userClaims = data.claims
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", displayName);
+            localStorage.setItem("userClaims", userClaims);
+            console.log('displayName1: ', displayName)
+            console.log('user Token1: ', token)
+            console.log('userClaims1: ', userClaims)
             dispatch({ type: "setLoggedInUser", data: displayName });
             dispatch({ type: "setToken", data: token });
+            dispatch({ type: "setUserClaims", data: userClaims });
             
             console.log('displayName2: ', displayName)
             console.log('user Token2: ', token)
-            firebase.auth().currentUser.getIdTokenResult()
-            .then((idTokenResult) => {
-                if (idTokenResult.claims.adminUser) {
-                    navigate("/employer")
-                }
-                else {
-                    navigate("/employee");
-                }
-            })
-            .catch((error) => console.log(error))
-            
+            console.log('userClaims2: ', userClaims)
+            console.log('store in SignIn.js is: ', store)
+            if (userClaims.adminUser === true) {
+                console.log (`You're being redirected to admin page`)
+                navigate("/employer")
+            } else if (userClaims.regularUser === true) {
+                console.log (`You're being redirected to Employee page`)
+                navigate("/employee")
+            } 
         })
-        .catch((error) => console.log(error));
-        
+        .catch((error) => console.log(error));        
     };
 
+    
+    
+     
 
     const theme = createTheme();
 
