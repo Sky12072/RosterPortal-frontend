@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getMongoUser } from "../services/authServices";
-import { getOneMongoUser } from "../services/authServices";
+
 
 export default function EmployerPage () {
 
@@ -10,9 +10,7 @@ export default function EmployerPage () {
     const [users, setUsers] = useState([])
     const {id} = useParams()
 
-    const [user, setUser] = useState([])
-
-    let navigate = useNavigate();
+    
 
     useEffect(() => {
         getMongoUser()
@@ -22,19 +20,10 @@ export default function EmployerPage () {
 
     console.log("USERS ARE: ",users.allEmployees)
     console.log("USERS TYPE IS: ",typeof users.allEmployees)
-
-    function handleClick(event) {
-        event.preventDefault()
-        getOneMongoUser(id)
-        .then(data => setUser(data))
-        .catch((error) => console.log(error))
-        navigate.push(`/check-employee/${id}`)
-    }
-
-
+    console.log("USER PARAMS: ",id)
+    console.log("USE Params EmployerPage: ",useParams())
 
     // Show all employee names
-
     return (
         <div>
             <h3>Employer Page</h3>
@@ -42,14 +31,15 @@ export default function EmployerPage () {
             <Typography>List of all employees</Typography>
             <div>{users.allEmployees &&
                 <ul>
-                    {users.allEmployees.map((person, i) => 
-                        <Link onClick={handleClick}>
-                        <Typography>
-                            {<li key={i}>
-                                {i} :  
-                                {person.name}
-                            </li>}
+                    {users.allEmployees.map((person, index) => 
+                        <Link to={`/check-employee/${person._id}`} key={index} >
+                            {
+                            <Typography >                        
+                                {index} :  
+                                {person.name}, -
+                                {person._id}
                             </Typography> 
+                            }
                         </Link>
                     )}
                 </ul>
