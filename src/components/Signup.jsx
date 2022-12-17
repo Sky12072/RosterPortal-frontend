@@ -38,13 +38,22 @@ export default function Signup () {
         registerUser(formState).then((data) => {
             let displayName = data.displayName;
             let token = data.token;
-            
+            let userClaims = data.claims
             sessionStorage.setItem("token", token);
             sessionStorage.setItem("user", displayName);
+            sessionStorage.setItem("userClaims", userClaims);
             dispatch({ type: "setLoggedInUser", data: displayName });
             dispatch({ type: "setToken", data: token });
-            navigate("/");
+            dispatch({ type: "setUserClaims", data: userClaims });
+            if (userClaims.adminUser === true) {
+                console.log (`You're being redirected to admin page`)
+                navigate("/employer")
+            } else if (userClaims.regularUser === true) {
+                console.log (`You're being redirected to Employee page`)
+                navigate("/employee")
+            } 
         })
+        .catch((error) => console.log(error)); 
     };
         
     

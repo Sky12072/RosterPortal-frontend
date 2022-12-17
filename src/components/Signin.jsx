@@ -36,30 +36,24 @@ export default function Signin() {
         })
     }
 
-
-    // const auth = getAuth(db);
-    // console.log('Auth is: ', auth)
-
     const handleSubmit = (event) => {
         event.preventDefault();
         loginUser(formState).then((data) => {
             let displayName = data.displayName;
             let token = data.idToken;
             let userClaims = data.claims
-            localStorage.setItem("token", token);
-            localStorage.setItem("user", displayName);
-            localStorage.setItem("userClaims", userClaims);
-            console.log('displayName1: ', displayName)
-            console.log('user Token1: ', token)
-            console.log('userClaims1: ', userClaims)
+            //setItem sets values in sessionStorage started when the webPage is loaded
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("displayName", displayName);
+            console.log("Setting Session Storage")
+            sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+            
+            // dispatch is to set values in store(initialState)
             dispatch({ type: "setLoggedInUser", data: displayName });
             dispatch({ type: "setToken", data: token });
+            console.log("Dispatching UserClaims Data Reducer")
             dispatch({ type: "setUserClaims", data: userClaims });
             
-            console.log('displayName2: ', displayName)
-            console.log('user Token2: ', token)
-            console.log('userClaims2: ', userClaims)
-            console.log('store in SignIn.js is: ', store)
             if (userClaims.adminUser === true) {
                 console.log (`You're being redirected to admin page`)
                 navigate("/employer")
@@ -70,10 +64,6 @@ export default function Signin() {
         })
         .catch((error) => console.log(error));        
     };
-
-    
-    
-     
 
     const theme = createTheme();
 

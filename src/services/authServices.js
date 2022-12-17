@@ -7,8 +7,8 @@ export async function loginUser(userData) {
 	return response.data;
 }
 
-export async function logoutUser(data) {
-	sessionStorage.clear(data);
+export async function logoutUser() {
+	sessionStorage.clear();
     return easyportalAPI.post('/users/sign-out');
 }
 
@@ -19,25 +19,38 @@ export async function registerUser(userInfo) {
 	return response.data;
 }
 
-// Get loggedInUser from localStorage
-export function getLoggedInUser() {
-	return localStorage.getItem('loggedInUser');
-}
-export function getAdminUser() {
-	return localStorage.getItem('adminUser');
+// All Mongo Services
+
+// Get MongoUser
+export async function getMongoUser() {
+	const response = await easyportalAPI.get('/employees')
+	console.log("Response is: ", response)
+	console.log("Response DATA is: ", response.data)
+	console.log("Response DATA NAME is: ", response.data.allEmployees.name)
+	console.log(response.data)
+	return response.data;
 }
 
-// Store loggedInUser displayName in local storage
-export function setLoggedInUser(user) {
-	console.log('setting user: ', user);
-	user
-		? localStorage.setItem('loggedInUser', user)
-		: localStorage.removeItem('loggedInUser');
+export async function getOneMongoUser(id) {
+	const response = await easyportalAPI.get(`/employees/${id}`)
+	console.log("Response is: ", response)
+	console.log("Response DATA is: ", response.data)
+	
+	console.log(response.data)
+	return response.data;
 }
 
-export function setAdminUser(admin) {
-	console.log('setting admin: ', admin);
-	admin
-		? localStorage.setItem('adminUser', admin)
-		: localStorage.removeItem('adminUser');
-}
+// // Store loggedInUser displayName in local storage
+// export function setLoggedInUser(user) {
+// 	console.log('setting user: ', user);
+// 	user
+// 		? localStorage.setItem('loggedInUser', user)
+// 		: localStorage.removeItem('loggedInUser');
+// }
+
+// export function setAdminUser(admin) {
+// 	console.log('setting admin: ', admin);
+// 	admin
+// 		? localStorage.setItem('adminUser', admin)
+// 		: localStorage.removeItem('adminUser');
+// }

@@ -35,16 +35,13 @@ export default function reducer (state, action) {
 		case 'setLoggedInUser': {
 			return {
 				...state,
-				loggedInUser: action.data
+				displayName: action.data
 			}
 		}
 		case 'setToken': {
 			return {
-				...state,
-				auth: {
-					...state.auth,
-					token: action.data
-				}
+                ...state,
+				token: action.data
 			}
         }
         case 'setUserClaims': {
