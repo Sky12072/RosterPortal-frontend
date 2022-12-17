@@ -13,6 +13,7 @@ import {getAuth} from "firebase/auth"
 import db from "../services/firebase"
 import Aboutpage from "./Aboutpage";
 import ShowOneEmployee from "./ShowOneEmployee";
+import UpdateEmployee from "./UpdateEmployee";
 
 
 function App() {
@@ -99,6 +100,7 @@ function App() {
 
 
         <Route path="/check-employee/:id" element={<ShowOneEmployee />} />
+        <Route path="/update-employee/:id" element={<UpdateEmployee />} />
 
         
       </Routes>

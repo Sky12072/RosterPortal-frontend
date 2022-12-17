@@ -1,48 +1,30 @@
 import { Typography } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser } from "../services/authServices";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-export default function ShowOneEmployee () {
-    console.log("THis is ShowOneEmployee.js ")
-
-    
-
-    const theme = createTheme({
-    status: {
-        danger: '#e53e3e',
-    },
-    palette: {
-        primary: {
-        main: '#0971f1',
-        darker: '#053e85',
-        },
-        neutral: {
-        main: '#64748B',
-        contrastText: '#fff',
-        },
-    },
-    });
+import { useGlobalState } from "../utils/stateContext";
 
 
-    const [user, setUser] = useState([])
+export default function UpdateEmployee() {
+    const initialFormState = {
+        Monday: '',
+        Tuesday: '',
+        Wednesday: '',
+        Thursday: '',
+        Friday: '',
+        Saturday: '',
+        Sunday: ''
+	}
+
+	const [formState, setFormState] = useState(initialFormState)
+	const {dispatch} = useGlobalState()
+
+    const navigate = useNavigate()
     const {id} = useParams()
-
     
-    console.log("USE Params ShowOneEmployee Page: ",useParams())
-
-    useEffect(() => {
-        getOneMongoUser(id)
-        .then(data => setUser(data))
-        .catch((error) => console.log(error))
-    }, [id])
-
-    console.log("getOneMongoUser IS: ",user)
-
-
 
     return (
         <div>
@@ -104,11 +86,11 @@ export default function ShowOneEmployee () {
                 type="submit"
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}>
-                Update
+                Confirm Update
             </Button>
             <ThemeProvider theme={theme}>
                 <Button color="primary" variant="outlined" startIcon={<DeleteIcon />} sx={{ mt: 3, mb: 2 }}>
-                    Delete
+                    Cancel
                 </Button>
             </ThemeProvider>
             
@@ -118,4 +100,7 @@ export default function ShowOneEmployee () {
 
         </div>
     )
+
+
+
 }

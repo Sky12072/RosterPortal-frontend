@@ -24,19 +24,23 @@ export async function registerUser(userInfo) {
 // Get MongoUser
 export async function getMongoUser() {
 	const response = await easyportalAPI.get('/employees')
-	console.log("Response is: ", response)
-	console.log("Response DATA is: ", response.data)
-	console.log("Response DATA NAME is: ", response.data.allEmployees.name)
-	console.log(response.data)
+	console.log("Response getMongoUser is: ", response)
+	console.log("Response DATA getMongoUser is: ", response.data)
+	console.log("Response DATA NAME getMongoUser is: ", response.data.allEmployees.name)
 	return response.data;
 }
 
 export async function getOneMongoUser(id) {
 	const response = await easyportalAPI.get(`/employees/${id}`)
-	console.log("Response is: ", response)
-	console.log("Response DATA is: ", response.data)
-	
-	console.log(response.data)
+	console.log("Response getOneMongoUser is: ", response)
+	console.log("Response getOneMongoUser DATA is: ", response.data)
+	return response.data;
+}
+
+export async function updateMongoUser(id) {
+	const response = await easyportalAPI.put(`/employees/${id}`)
+	console.log("Response updateMongoUser is: ", response)
+	console.log("Response DATA updateMongoUser is: ", response.data)
 	return response.data;
 }
 
