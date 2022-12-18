@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser } from "../services/authServices";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,8 +8,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function ShowOneEmployee () {
     console.log("THis is ShowOneEmployee.js ")
-
-    
 
     const theme = createTheme({
     status: {
@@ -27,6 +25,10 @@ export default function ShowOneEmployee () {
     },
     });
 
+    let navigate = useNavigate();
+
+    
+
 
     const [user, setUser] = useState([])
     const {id} = useParams()
@@ -42,6 +44,17 @@ export default function ShowOneEmployee () {
 
     console.log("getOneMongoUser IS: ",user)
 
+    function changeButton(event) {
+        event.preventDefault()
+        navigate(`/update-employee/${id}`)
+    }
+
+
+   
+
+    function deleteClick() {
+
+    }
 
 
     return (
@@ -103,12 +116,14 @@ export default function ShowOneEmployee () {
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}>
-                Update
+                sx={{ mt: 3, mb: 2 }}
+                onClick={changeButton}
+                >
+                Update Roster
             </Button>
             <ThemeProvider theme={theme}>
                 <Button color="primary" variant="outlined" startIcon={<DeleteIcon />} sx={{ mt: 3, mb: 2 }}>
-                    Delete
+                    Delete Employee
                 </Button>
             </ThemeProvider>
             

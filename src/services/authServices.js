@@ -32,14 +32,14 @@ export async function getMongoUser() {
 
 export async function getOneMongoUser(id) {
 	const response = await easyportalAPI.get(`/employees/${id}`)
-	console.log("Response getOneMongoUser is: ", response)
-	console.log("Response getOneMongoUser DATA is: ", response.data)
+	// console.log("Response getOneMongoUser is: ", response)
+	// console.log("Response getOneMongoUser DATA is: ", response.data)
 	return response.data;
 }
 
-export async function updateMongoUser(id) {
-	const response = await easyportalAPI.put(`/employees/${id}`)
-	console.log("Response updateMongoUser is: ", response)
+export async function updateMongoUser(id, body) {
+	const response = await easyportalAPI.put(`/employees/${id}`, body)
+	
 	console.log("Response DATA updateMongoUser is: ", response.data)
 	return response.data;
 }

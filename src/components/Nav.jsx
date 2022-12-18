@@ -62,12 +62,7 @@ export default function Nav() {
                 navigate('/about')
                 console.log("Navigate to about page")
                 break;
-        
         }
-            
-        
-        
-
     }
     
 

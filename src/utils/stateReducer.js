@@ -1,37 +1,18 @@
 export default function reducer (state, action) {
 	switch(action.type) {
-        // case 'setRosters': {
-        //     return {
-        //         ...state,
-        //         rosters: action.data
-        //     }
-        // }
-        // case 'addRoster': {
-        //     return {
-        //         ...state,
-        //         rosters: [action.data, ...state.rosters]
-        //     }
-        // }
-        // case 'deleteRoster': {
-        //     const updatedRosters = state.rosterss.filter((roster) => {
-        //         return roster.id !== parseInt(action.data)
-        //     })
-        //     return {
-        //         ...state,
-        //         rosters: updatedRosters
-        //     }
-        // }
-
-        // case 'updateRoster': {
-        //     const roster = state.rosters.find((roster) => roster.id === action.data.id)
-        //     const updatedRoster = Object.assign(roster, action.data)
-
-        //     const otherRosters = state.predictions.filter((roster) => roster.id !== action.data.id)
-        //     return {
-        //         ...state,
-        //         rosters: [updatedRoster, ...otherRosters]
-        //     }
-        // }
+        // data in action.data is data coming from fetching to an API. ie. Mongo database, firebase.
+        case 'updateRoster': {
+            return {
+                ...state,
+                Monday: action.data,
+                Tuesday: action.data,
+                Wednesday: action.data,
+                Thursday: action.data,
+                Friday: action.data,
+                Saturday: action.data,
+                Sunday: action.data
+            }
+        }
 		case 'setLoggedInUser': {
 			return {
 				...state,
