@@ -8,10 +8,10 @@ const easyportalAPI = axios.create({
 
 easyportalAPI.interceptors.request.use((req) => {
     const token = sessionStorage.getItem("token");
-    console.log("Set token header1: ", token);
+    console.log("Set token header: ", token);
     if (token) {
         req.headers["Authorization"] = `Bearer ${token}`;
-        console.log("Set token header2: ", token)
+        
     }
     return req;
 

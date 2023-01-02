@@ -33,7 +33,7 @@ export async function getMongoUser() {
 export async function getOneMongoUser(id) {
 	const response = await easyportalAPI.get(`/employees/${id}`)
 	// console.log("Response getOneMongoUser is: ", response)
-	// console.log("Response getOneMongoUser DATA is: ", response.data)
+	console.log("Response getOneMongoUser DATA is: ", response.data)
 	return response.data;
 }
 
@@ -44,17 +44,20 @@ export async function updateMongoUser(id, body) {
 	return response.data;
 }
 
-// // Store loggedInUser displayName in local storage
-// export function setLoggedInUser(user) {
-// 	console.log('setting user: ', user);
-// 	user
-// 		? localStorage.setItem('loggedInUser', user)
-// 		: localStorage.removeItem('loggedInUser');
-// }
+export async function deleteUserMongoDB(id) {
+	const response = await easyportalAPI.delete(`/employees/${id}`)
+	
+	console.log("Response DATA deleteUserMongoDB is: ", response.data)
+	
+	return response.data;
+}
 
-// export function setAdminUser(admin) {
-// 	console.log('setting admin: ', admin);
-// 	admin
-// 		? localStorage.setItem('adminUser', admin)
-// 		: localStorage.removeItem('adminUser');
-// }
+export async function deleteUserFirebase(id) {
+	const response = await easyportalAPI.delete(`/users/delete/${id}`)
+
+	console.log("REACT FIrebase UID AuthServices.js: ", id)
+	console.log("Response DATA deleteUserFirebase is: ", response.data)
+	
+	return response.data;
+}
+

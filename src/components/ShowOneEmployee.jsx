@@ -5,6 +5,7 @@ import { getOneMongoUser } from "../services/authServices";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { deleteUserMongoDB, deleteUserFirebase } from "../services/authServices";
 
 export default function ShowOneEmployee () {
     console.log("THis is ShowOneEmployee.js ")
@@ -29,13 +30,16 @@ export default function ShowOneEmployee () {
 
     
 
-
+    // to get user ID value as a page title
     const [user, setUser] = useState([])
+
+
     const {id} = useParams()
 
     
-    console.log("USE Params ShowOneEmployee Page: ",useParams())
+    
 
+    // to get user ID value as a page title
     useEffect(() => {
         getOneMongoUser(id)
         .then(data => setUser(data))
@@ -43,6 +47,7 @@ export default function ShowOneEmployee () {
     }, [id])
 
     console.log("getOneMongoUser IS: ",user)
+    console.log("getOneMongoUser Firebase USERID IS: ",user.employeeID)
 
     function changeButton(event) {
         event.preventDefault()
@@ -52,8 +57,19 @@ export default function ShowOneEmployee () {
 
    
 
-    function deleteClick() {
-
+    function deleteClick(event) {
+        event.preventDefault()
+        deleteUserFirebase(user.employeeID)
+        .then((data) => {
+            console.log("deleteClick FirebaseUser-data is: ", data)
+        })
+        deleteUserMongoDB(id)
+        .then((data) => {
+            console.log("deleteClick MongoUser-data is: ", data)
+        })
+        
+        navigate("/employer")
+        
     }
 
 
@@ -122,7 +138,13 @@ export default function ShowOneEmployee () {
                 Update Roster
             </Button>
             <ThemeProvider theme={theme}>
-                <Button color="primary" variant="outlined" startIcon={<DeleteIcon />} sx={{ mt: 3, mb: 2 }}>
+                <Button 
+                    color="primary" 
+                    variant="outlined" 
+                    startIcon={<DeleteIcon />} 
+                    sx={{ mt: 3, mb: 2 }}
+                    onClick={deleteClick}
+                    >
                     Delete Employee
                 </Button>
             </ThemeProvider>

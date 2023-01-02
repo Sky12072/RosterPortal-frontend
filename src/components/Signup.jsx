@@ -19,7 +19,7 @@ export default function Signup () {
         displayName: "",
         email: "",
         password: "",
-        password_confirmation: "",
+        
     };
 
     const [formState, setFormState] = useState(initialFormState)
@@ -125,7 +125,7 @@ export default function Signup () {
                                 onChange={handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            {/* <Grid item xs={12}>
                                 <TextField
                                 required
                                 fullWidth
@@ -135,7 +135,7 @@ export default function Signup () {
                                 value={formState.password_confirmation}                  
                                 onChange={handleChange}
                                 />
-                            </Grid>
+                            </Grid> */}
                             {/* <Grid item xs={12}>
                                 <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}
