@@ -31,7 +31,7 @@ export default function EmployerPage () {
     // Show all employee names
     return (
         <div>
-            <h3>Employer Page</h3>
+            <h1>Employer Page</h1>
             <Link to="/">Go to MAIN page</Link>
             <Typography>List of all employees</Typography>
             <div>{users.allEmployees &&

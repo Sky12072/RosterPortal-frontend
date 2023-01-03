@@ -61,3 +61,11 @@ export async function deleteUserFirebase(id) {
 	return response.data;
 }
 
+
+// For employee Page (Firebase UID to match with MongoDB userID)
+export async function MatchMongoUser(id) {
+	const response = await easyportalAPI.get(`/employees/match/${id}`)
+	// console.log("Response getOneMongoUser is: ", response)
+	console.log("Response getOneMongoUser DATA is: ", response.data)
+	return response.data;
+}
