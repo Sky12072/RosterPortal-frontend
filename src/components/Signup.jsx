@@ -42,7 +42,7 @@ export default function Signup () {
             //setItem sets values in sessionStorage started when the webPage is loaded
             sessionStorage.setItem("idToken", token);
             sessionStorage.setItem("displayName", displayName);
-            console.log("SIGN IN DATA is: ",data)
+            console.log("SIGN UP DATA is: ",data)
             sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
             
             
@@ -51,7 +51,7 @@ export default function Signup () {
             dispatch({ type: "setToken", data: token });
             console.log("Dispatching UserClaims Data Reducer")
             dispatch({ type: "setUserClaims", data: userClaims });
-            
+
             if (userClaims.adminUser === true) {
                 console.log (`You're being redirected to admin page`)
                 navigate("/employer")
