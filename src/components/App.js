@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect} from "react";
+import React, { useReducer} from "react";
 import EmployerPage from "./EmployerPage";
 import Nav from "./Nav"
 import {Routes, Route} from "react-router-dom";
@@ -9,8 +9,6 @@ import Signup from "./Signup";
 import reducer from "../utils/stateReducer"
 import Signin from "./Signin";
 import Signout from "./Signout";
-import {getAuth} from "firebase/auth"
-import db from "../services/firebase"
 import Aboutpage from "./Aboutpage";
 import ShowOneEmployee from "./ShowOneEmployee";
 import UpdateEmployee from "./UpdateEmployee";
@@ -19,32 +17,26 @@ import UpdateEmployee from "./UpdateEmployee";
 function App() {
   console.log("FIRST LOAD is APP.js")
   console.log("Initial State 1")
-  const initialState = {
-    // these one are to be used with useReducer
-    // so the steps are: sign up/ sign in using form and then update loggedInUser, auth and userClaims value from the returned value after logging in/signing up that comesback from express-firebase.
-    displayName: sessionStorage.getItem("displayName") || null,
-    idToken: sessionStorage.getItem("idToken") || null,
-    userClaims: JSON.parse(sessionStorage.getItem("userClaims")) || null
-  }
+  
+    const initialState = {
+      // these one are to be used with useReducer
+      // so the steps are: sign up/ sign in using form and then update loggedInUser, auth and userClaims value from the returned value after logging in/signing up that comesback from express-firebase.
+      displayName: sessionStorage.getItem("displayName") || null,
+      idToken: sessionStorage.getItem("idToken") || null,
+      userClaims: JSON.parse(sessionStorage.getItem("userClaims")) || null
+    }
+    
   console.log("Initial State 2")
   // console.log("APP.js SESSIONSTORAGE userCLAIMS is :", JSON.parse(sessionStorage.userClaims))
 
-  console.log("APP.js SESSIONSTORAGE is :", sessionStorage)
-  
-  // const reAuth = getAuth(db);
-  // console.log("REAUTH in APP.js is: ", reAuth)
-  
+  console.log("APP.js SESSIONSTORAGE is :", sessionStorage)  
 
   const [store, dispatch] = useReducer(reducer, initialState);
   
   const {userClaims, displayName, idToken} = store
   
-  
-  
   console.log("Store in APP.js is: ", store)
 
-  
-  
   console.log(idToken)
   console.log("TYPEOF STORE is: ", typeof userClaims)
   console.log("TYPEOF SESSIONSTORAGE is: ", typeof (sessionStorage.userClaims))
