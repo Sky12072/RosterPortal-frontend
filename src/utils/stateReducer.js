@@ -22,10 +22,11 @@ export default function reducer (state, action) {
 		case 'setToken': {
 			return {
                 ...state,
-				token: action.data
+				idToken: action.data
 			}
         }
         case 'setUserClaims': {
+            
             return {
                 ...state,
                 userClaims: action.data
