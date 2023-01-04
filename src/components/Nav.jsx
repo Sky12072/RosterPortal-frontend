@@ -21,7 +21,7 @@ export default function Nav() {
 
     let navigate = useNavigate();
     const {store, dispatch} = useGlobalState();
-    const {displayName, token, userClaims} = store
+    const {displayName, idToken, userClaims} = store
 
     // Nav buttons useState
     const [state, setState] = useState(false)
@@ -29,7 +29,7 @@ export default function Nav() {
     function handleSignOut(event) {
 		event.preventDefault()
         console.log('loggedinUser1: ', displayName)       
-        console.log('user Token1: ', token)
+        console.log('user Token1: ', idToken)
         console.log('Handlesignout userclaims: ', userClaims)
         
 		logoutUser(displayName)

@@ -37,14 +37,21 @@ export default function Signup () {
         event.preventDefault();
         registerUser(formState).then((data) => {
             let displayName = data.displayName;
-            let token = data.token;
+            let token = data.idToken;
             let userClaims = data.claims
-            sessionStorage.setItem("token", token);
-            sessionStorage.setItem("user", displayName);
-            sessionStorage.setItem("userClaims", userClaims);
+            //setItem sets values in sessionStorage started when the webPage is loaded
+            sessionStorage.setItem("idToken", token);
+            sessionStorage.setItem("displayName", displayName);
+            console.log("SIGN IN DATA is: ",data)
+            sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+            
+            
+            // dispatch is to set values in store(initialState)
             dispatch({ type: "setLoggedInUser", data: displayName });
             dispatch({ type: "setToken", data: token });
+            console.log("Dispatching UserClaims Data Reducer")
             dispatch({ type: "setUserClaims", data: userClaims });
+            
             if (userClaims.adminUser === true) {
                 console.log (`You're being redirected to admin page`)
                 navigate("/employer")

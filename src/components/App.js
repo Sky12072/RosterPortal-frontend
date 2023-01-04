@@ -23,8 +23,8 @@ function App() {
     // these one are to be used with useReducer
     // so the steps are: sign up/ sign in using form and then update loggedInUser, auth and userClaims value from the returned value after logging in/signing up that comesback from express-firebase.
     displayName: sessionStorage.getItem("displayName") || null,
-    token: sessionStorage.getItem("token") || null,
-    userClaims: JSON.parse(sessionStorage.getItem("userClaims")) || null,    
+    idToken: sessionStorage.getItem("idToken") || null,
+    userClaims: JSON.parse(sessionStorage.getItem("userClaims")) || null
   }
   console.log("Initial State 2")
   // console.log("APP.js SESSIONSTORAGE userCLAIMS is :", JSON.parse(sessionStorage.userClaims))
@@ -37,42 +37,18 @@ function App() {
 
   const [store, dispatch] = useReducer(reducer, initialState);
   
-  const {userClaims, displayName, token} = store
+  const {userClaims, displayName, idToken} = store
   
-
+  
   
   console.log("Store in APP.js is: ", store)
 
   
-  // console.log("APP.js LoggedIn User is: ", displayName)
-  // console.log("APP.js userClaims User is:\n ", userClaims)
-  // console.log('APP.js user Token1: ',token)
-  // console.log('APP.js user adminUser ', adminUser) 
   
-  // useEffect(() => {
-  //   console.log("User state changed 1") 
-  //   // const adminUser = JSON.parse(sessionStorage.getItem("userClaims", userClaims.name));
-  //   if (userClaims) {
-  //     // dispatch({ type: "setUserClaims", data: JSON.stringify(userClaims) })
-  //     setState(sessionStorage.getItem("userClaims", JSON.parse(userClaims)))
-  //     // dispatch({ type: "setUserClaims", data: JSON.parse(userClaims) })
-  //     // const bla = JSON.parse(userClaims).adminUser;
-  //     // console.log("User state changed 1: ADMIN USER: ", adminUser) 
-  //     console.log("User state changed : BLA: ") 
-  //   }
-    
-  // }, [state]);
-
-  // useEffect(() => {
-  //   if (userClaims) {
-  //     console.log("User state changed 2") 
-  //     dispatch({ type: "setUserClaims", data: JSON.parse(userClaims) })
-      
-  //   }
-  // }, []);
-
-  
- 
+  console.log(idToken)
+  console.log("TYPEOF STORE is: ", typeof userClaims)
+  console.log("TYPEOF SESSIONSTORAGE is: ", typeof (sessionStorage.userClaims))
+  console.log("SESSIONSTORAGE is: ", sessionStorage.userClaims)
 
 
   return (

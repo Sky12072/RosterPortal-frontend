@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -27,6 +27,8 @@ export default function Signin() {
 
 	const {store, dispatch} = useGlobalState()
 
+    
+
     let navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -43,10 +45,11 @@ export default function Signin() {
             let token = data.idToken;
             let userClaims = data.claims
             //setItem sets values in sessionStorage started when the webPage is loaded
-            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("idToken", token);
             sessionStorage.setItem("displayName", displayName);
-            console.log("Setting Session Storage")
+            console.log("SIGN IN DATA is: ",data)
             sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+            
             
             // dispatch is to set values in store(initialState)
             dispatch({ type: "setLoggedInUser", data: displayName });
@@ -61,9 +64,19 @@ export default function Signin() {
                 console.log (`You're being redirected to Employee page`)
                 navigate("/employee")
             } 
+            
         })
+        
         .catch((error) => console.log(error));        
     };
+
+    // useEffect(() => {
+    //     if (typeof sessionStorage.userClaims === 'string') {
+    //         sessionStorage.setItem("userClaims", JSON.parse(userClaims));
+    //     //   dispatch('setUserClaims', JSON.parse(sessionStorage.userClaims));
+    //     //   dispatch('setUserClaims', JSON.parse(userClaims));
+    //     }
+    //   }, []);
 
     const theme = createTheme();
 

@@ -33,10 +33,10 @@ export default function EmployeePage () {
     // to get user ID value as a page title
     const [user, setUser] = useState([])
 
+    console.log("Employee user is: ", user)
+    // const {id} = useParams()
 
-    const {id} = useParams()
-
-    console.log("params is: ", id)
+    // console.log("params is: ", id)
     
 
     // to get user ID value as a page title
