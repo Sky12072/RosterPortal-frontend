@@ -27,7 +27,8 @@ export default function UpdateEmployee() {
         Thursday: '',
         Friday: '',
         Saturday: '',
-        Sunday: ''
+        Sunday: '', 
+        TotalHours: ''
 	}
 
     // to update form text value
@@ -233,6 +234,25 @@ export default function UpdateEmployee() {
                                     name="Sunday"
                                    
                                     value={formState.Sunday}
+                                    onChange={handleChange}
+                                    label="Enter new hours"
+                                    autoFocus
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Box>
+
+                        <Typography component="h1" variant="h5" sx={{
+                        mr:3,}}>
+                            Total Hours: 
+                        </Typography>
+                        <Box component="form" noValidate >
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} >
+                                    <TextField
+                                    name="TotalHours"
+                                   
+                                    value={formState.TotalHours}
                                     onChange={handleChange}
                                     label="Enter new hours"
                                     autoFocus

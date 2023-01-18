@@ -122,6 +122,10 @@ export default function ShowOneEmployee () {
                         i===9 &&
                         <Typography key={i}>                            
                             {9}. {k} : {v}
+                        </Typography>,
+                        i===10 &&
+                        <Typography key={i}>                            
+                            {10}. {k} : {v}
                         </Typography>
                         
                     ]
