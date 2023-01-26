@@ -106,7 +106,24 @@ export default function UpdateEmployee() {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
-                    >
+                    >   <Typography component="h1" variant="h5" sx={{
+                        mr:3,}}>
+                            Week Period: 
+                        </Typography>
+                        <Box component="form" noValidate >
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} >
+                                    <TextField
+                                    name="WeekPeriod"
+                                   
+                                    value={formState.WeekPeriod}
+                                    onChange={handleChange}
+                                    label="Enter new WeekPeriod"
+                                    autoFocus
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Box>
                         
                         <Typography component="h1" variant="h5" sx={{
                         mr:3,}}>

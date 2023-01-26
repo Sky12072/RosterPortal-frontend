@@ -1,14 +1,15 @@
-import { Typography } from "@mui/material";
+import { Typography,  Grid } from "@mui/material";
 import React, {useEffect, useState} from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { getOneMongoUser } from "../services/authServices";
+import { getOneMongoUser, MatchMongoUser } from "../services/authServices";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { deleteUserMongoDB, deleteUserFirebase } from "../services/authServices";
+import { useGlobalState } from "../utils/stateContext";
+import { HoursDiagram } from "../userpage/HoursDiagram";
 
-export default function ShowOneEmployee () {
-    console.log("THis is ShowOneEmployee.js ")
+
+export default function EmployeePage () {
 
     const theme = createTheme({
     status: {
@@ -26,59 +27,35 @@ export default function ShowOneEmployee () {
     },
     });
 
-    let navigate = useNavigate();
-
+    
+    const {store, dispatch} = useGlobalState();
+    const {displayName, token, userClaims} = store
     
 
     // to get user ID value as a page title
     const [user, setUser] = useState([])
 
+    console.log("Employee user is: ", user)
+    // const {id} = useParams()
 
-    const {id} = useParams()
-
-    
+    // console.log("params is: ", id)
     
 
     // to get user ID value as a page title
     useEffect(() => {
-        getOneMongoUser(id)
+        MatchMongoUser(userClaims.user_id)
         .then(data => setUser(data))
         .catch((error) => console.log(error))
-    }, [id])
+    }, [])
 
-    console.log("getOneMongoUser IS: ",user)
-    console.log("getOneMongoUser Firebase USERID IS: ",user.employeeID)
-
-    function changeButton(event) {
-        event.preventDefault()
-        navigate(`/update-employee/${id}`)
-    }
-
-
-   
-
-    function deleteClick(event) {
-        event.preventDefault()
-        deleteUserFirebase(user.employeeID)
-        .then((data) => {
-            console.log("deleteClick FirebaseUser-data is: ", data)
-        })
-        deleteUserMongoDB(id)
-        .then((data) => {
-            console.log("deleteClick MongoUser-data is: ", data)
-        })
-        
-        navigate("/employer")
-        
-    }
-
-
+    console.log("getOneMongoUser IS: ",user._id)
+    
     return (
         <div>
-            <h3>getOneMongoUser Page</h3>
-            <h3>Employee Name: {user.name}</h3>
-            <h3>Employee ID: {id}</h3>
-            <h3>Week Period: </h3>
+            <h1>Employee Page</h1>
+            <h3>Employee Name: {displayName}</h3>
+            <h3>Employee Mongo ID: {user._id}</h3>
+            <h3>Employee Firebase ID: {userClaims.user_id}</h3>
             <Link to="/">Go to MAIN page</Link>
             <Link to="/employer">Go to Employer page</Link>
             <div>
@@ -127,41 +104,34 @@ export default function ShowOneEmployee () {
                         i===10 &&
                         <Typography key={i}>                            
                             {10}. {k} : {v}
-                        </Typography>,
-                        i===11 &&
-                        <Typography key={i}>                            
-                            {11}. {k} : {v}
                         </Typography>
+                        
+                       
                         
                     ]
                     )
+                    
                 }
+                
             </div>
 
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={changeButton}
-                >
-                Update Roster
-            </Button>
-            <ThemeProvider theme={theme}>
-                <Button 
-                    color="primary" 
-                    variant="outlined" 
-                    startIcon={<DeleteIcon />} 
-                    sx={{ mt: 3, mb: 2 }}
-                    onClick={deleteClick}
-                    >
-                    Delete Employee
-                </Button>
-            </ThemeProvider>
             
-            
-
+            <Grid
+            item
+            lg={4}
+            md={6}
+            xl={3}
+            xs={12}
+            >
+                <HoursDiagram sx={{ height: '100%' }} />
+            </Grid>
+                
             
 
         </div>
+        
+    
+    
+
     )
 }

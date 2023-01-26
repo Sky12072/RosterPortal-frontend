@@ -12,6 +12,7 @@ import Signout from "./Signout";
 import Aboutpage from "./Aboutpage";
 import ShowOneEmployee from "./ShowOneEmployee";
 import UpdateEmployee from "./UpdateEmployee";
+import Navbar from './Navbar'
 
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
   return (
     <div>
       <StateContext.Provider value={{store, dispatch}}>
-      <Nav />
+      {/* <Nav /> */}
+      <div><Navbar /></div>
       
       <Routes>
         {/* This don't display anything on the web, because all content that displays coming from Mainpage component. So this part is purely to set the route path of each component */}

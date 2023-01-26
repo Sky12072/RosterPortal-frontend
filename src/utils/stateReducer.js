@@ -4,6 +4,7 @@ export default function reducer (state, action) {
         case 'updateRoster': {
             return {
                 ...state,
+                WeekPeriod: action.data,
                 Monday: action.data,
                 Tuesday: action.data,
                 Wednesday: action.data,
