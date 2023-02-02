@@ -14,7 +14,9 @@ function Navbar() {
 
   let navigate = useNavigate();
   const {store, dispatch} = useGlobalState();
-  const {displayName} = store
+  const {displayName, userClaims} = store
+
+  console.log ("Store Navbar is: ", userClaims)
 
   // Nav buttons useState
   // const [state, setState] = useState(false)
@@ -38,7 +40,8 @@ function Navbar() {
     // console.log(event.target.name)
     switch(event.target.name){
         case 'home':
-            navigate('/employer')
+            userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')
+            
             console.log("Navigate to home page")
             break;
         case 'about':
@@ -46,9 +49,11 @@ function Navbar() {
             console.log("Navigate to about page")
             break;
         default:
-            navigate('/employer')
+            userClaims.regularUser ? navigate('/employer') : navigate('/employee')
+            
             console.log("Default Switch Case Navbar Executed")
             break;
+            
     }
   }
 

@@ -53,7 +53,7 @@ export default function Signin() {
                     console.log(!!data.error)
                     if (!!data.error === true){
                         console.error("data.error.code is: ",data.error.code)
-                        return setErrorMessage("Email or Password are invalid")
+                        return setErrorMessage("Email or Password is invalid")
                     }
                     
                     let displayName = data.displayName;
@@ -86,7 +86,7 @@ export default function Signin() {
                 })           
             }
         }catch(error){
-            console.error(error);
+            console.error("ERROR IS: ", error);
         }
     };
 

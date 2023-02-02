@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { deleteUserMongoDB, deleteUserFirebase } from "../services/authServices";
 import DataTable from 'react-data-table-component';
 import '../assets/table.css'
+import { useGlobalState } from "../utils/stateContext";
 
 export default function ShowOneEmployee () {
     console.log("THis is ShowOneEmployee.js ")
@@ -34,6 +35,12 @@ export default function ShowOneEmployee () {
     const [user, setUser] = useState([])
 
     const {id} = useParams()
+
+    const {store} = useGlobalState();
+    const {userClaims} = store
+
+  console.log ("Store Navbar is: ", userClaims)
+
 
     // to get user ID value as a page title
     useEffect(() => {
@@ -75,7 +82,7 @@ export default function ShowOneEmployee () {
        
         switch(event.target.name){
             case 'home':
-                navigate('/employer')
+                userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')            
                 console.log("Navigate to home page")
                 break;
             case 'update':
@@ -87,7 +94,7 @@ export default function ShowOneEmployee () {
                 console.log("Navigate to timetable page")
                 break;
             default:
-                navigate('/employer')
+                userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')          
                 console.log("Default Switch Case Show One Employee Executed")
                 break;
         }
