@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { deleteUserMongoDB, deleteUserFirebase } from "../services/authServices";
+import DataTable from 'react-data-table-component';
+import '../assets/table.css'
 
 export default function ShowOneEmployee () {
     console.log("THis is ShowOneEmployee.js ")
@@ -45,17 +47,55 @@ export default function ShowOneEmployee () {
         .then(data => setUser(data))
         .catch((error) => console.log(error))
     }, [id])
+   
+    console.log("Show 1 employee IS: ",user)
+    
 
-    console.log("getOneMongoUser IS: ",user)
-    console.log("getOneMongoUser Firebase USERID IS: ",user.employeeID)
+    const columns = [
+        {
+            name: 'Number',
+            selector: row => row[0].id,            
+        },
+        {
+            name: 'Key',
+            selector: row => row[0].key,            
+        },
+        {
+            name: 'value',
+            selector: row => row[0].value,
+        },
+        
+    ];
+
+   
+    const data = user && Object.entries(user).map(([k,v], i) => [ 
+        {
+            id: i,
+            key: k,
+            value: v,
+        }
+        
+    ])
+
 
     function changeButton(event) {
         event.preventDefault()
-        navigate(`/update-employee/${id}`)
+       
+        switch(event.target.name){
+            case 'home':
+                navigate('/employer')
+                console.log("Navigate to home page")
+                break;
+            case 'update':
+                navigate(`/update-employee/${id}`)
+                console.log("Navigate to update page")
+                break;
+            case 'timetable':
+                navigate('/timetable')
+                console.log("Navigate to timetable page")
+                break;
+        }
     }
-
-
-   
 
     function deleteClick(event) {
         event.preventDefault()
@@ -72,76 +112,64 @@ export default function ShowOneEmployee () {
         
     }
 
-
     return (
-        <div>
-            <h3>getOneMongoUser Page</h3>
-            <h3>Employee Name: {user.name}</h3>
-            <h3>Employee ID: {id}</h3>
-            <h3>Week Period: </h3>
-            <Link to="/">Go to MAIN page</Link>
-            <Link to="/employer">Go to Employer page</Link>
-            <div>
-                {user &&
-                    
-                    Object.entries(user).map(([k,v], i) => [
-                        i===0 &&
-                        <Typography key={i}>   
-                        {/* IMPORTANT: 
-                        1.This "ID" Originally was _id, so please use the original key to modify
-                        2. number {1} to {9} are only for display purposes and original index identifer was {i}. ie. {1} actually 0 ( i=== 0 ). */}
-                            {1}. {"ID"} : {v}
-                        </Typography>,
-                        i===1 &&
-                        <Typography key={i}>                            
-                            {2}. {k} : {v}
-                        </Typography>,
-                        i===3 &&
-                        <Typography key={i}>                            
-                            {3}. {k} : {v}
-                        </Typography>,
-                        i===4 &&
-                        <Typography key={i}>                            
-                            {4}. {k} : {v}
-                        </Typography>,
-                        i===5 &&
-                        <Typography key={i}>                            
-                            {5}. {k} : {v}
-                        </Typography>,
-                        i===6 &&
-                        <Typography key={i}>                            
-                            {6}. {k} : {v}
-                        </Typography>,
-                        i===7 &&
-                        <Typography key={i}>                            
-                            {7}. {k} : {v}
-                        </Typography>,
-                        i===8 &&
-                        <Typography key={i}>                            
-                            {8}. {k} : {v}
-                        </Typography>,
-                        i===9 &&
-                        <Typography key={i}>                            
-                            {9}. {k} : {v}
-                        </Typography>,
-                        i===10 &&
-                        <Typography key={i}>                            
-                            {10}. {k} : {v}
-                        </Typography>,
-                        i===11 &&
-                        <Typography key={i}>                            
-                            {11}. {k} : {v}
-                        </Typography>
-                        
-                    ]
-                    )
-                }
-            </div>
+        <div style={{
+            
+            padding: "0px 250px",
+            
+        }}>
+            {/* <h1>Employer Page</h1> */}
+            {/* <Link to="/">Go to MAIN page</Link> */}
+            <Button 
+            variant="contained" 
+            name='timetable'
+            style={{
+                borderRadius: 35,
+                backgroundColor: "#21b6ae",
+                padding: "18px 36px",
+                fontSize: "18px",
+                margin: "30px 0px 0px 30px"
+            }} onClick={changeButton}>
+            Time Table
+            </Button>
 
+            <Button 
+            variant="contained" 
+            color="success" 
+            name="home"
+            style={{
+                borderRadius: 35,
+                backgroundColor: "#ff8791",
+                padding: "18px 36px",
+                fontSize: "18px",
+                margin: "30px 0px 0px 30px"
+            }} onClick={changeButton}>
+            Main Page
+            </Button>
+            {/* <Link to="/timetable">Go to TimeTable</Link> */}
+
+            <Typography variant="h3" sx={{textAlign:"center", mb:3}}>
+                Employee Details
+            </Typography>
+            <div className='table'  style={{
+            
+            backgroundColor: "#fce9b3",
+            padding: "18px 36px",
+            fontSize: "18px",
+            margin: "30px"
+            }}>
+                    
+                <DataTable 
+                columns ={columns}
+                data={data}
+                pagination={true}
+                />
+            </div>
             <Button
+                name="update"
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 0, mr: 2, mb: 5, ml: 3 }}
                 onClick={changeButton}
                 >
                 Update Roster
@@ -151,17 +179,14 @@ export default function ShowOneEmployee () {
                     color="primary" 
                     variant="outlined" 
                     startIcon={<DeleteIcon />} 
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 0, mr: 3, mb: 5, ml: 2  }}
                     onClick={deleteClick}
                     >
                     Delete Employee
                 </Button>
             </ThemeProvider>
-            
-            
-
-            
-
         </div>
-    )
+    );
+
+
 }

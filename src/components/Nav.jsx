@@ -75,6 +75,8 @@ export default function Nav() {
                     <Stack direction='row' spacing={2}>
                         <Button color = 'inherit' name='home' onClick={changeButton}>Home</Button>
                         <Button color='inherit' name='about' onClick={changeButton} >About</Button>
+
+                        
                         {displayName ? 
                         <>
                         <Button variant="contained" color='primary' onClick={handleSignOut}>Sign Out</Button>

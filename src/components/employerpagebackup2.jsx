@@ -1,11 +1,10 @@
-import { Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import React, {useEffect, useState, useReducer} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { getMongoUser } from "../services/authServices";
 import reducer from "../utils/stateReducer"
 import { useGlobalState } from "../utils/stateContext";
 import DataTable from 'react-data-table-component';
-import '../assets/table.css'
 
 
 
@@ -18,7 +17,7 @@ export default function EmployerPage () {
     const {store, dispatch} = useGlobalState();
     const {userClaims} = store
     
-    let navigate = useNavigate();
+
     
 
     useEffect(() => {
@@ -26,11 +25,6 @@ export default function EmployerPage () {
         .then(data => setUsers(data))
         .catch((error) => console.log(error))
     }, [])
-
-    function changeButton(event) {
-        event.preventDefault()
-        navigate(`/timetable`)
-    }
 
     console.log("USERS ARE: ",users.allEmployees)
     console.log("USERS TYPE IS: ",typeof users.allEmployees)
@@ -43,10 +37,7 @@ export default function EmployerPage () {
         },
         {
             name: 'Name',
-            
-            selector: row => (
-                <Link to={`/check-employee/${row[0].uniqueid}`}>{row[0].name}</Link>
-            )
+            selector: row => row[0].name,
             
         },
         {
@@ -60,7 +51,7 @@ export default function EmployerPage () {
         {
             id: index,
             name: person.name,
-            uniqueid: person._id
+            uniqueid: person.employeeID
             
         },
         
@@ -71,27 +62,12 @@ export default function EmployerPage () {
 
     
     return (
-        <div style={{
-            borderRadius: 35,
-            backgroundColor: "#fce9b3",
-            padding: "18px 250px",
-            fontSize: "18px",
-            margin: "30px"
-        }}>
-            {/* <h1>Employer Page</h1> */}
-            {/* <Link to="/">Go to MAIN page</Link> */}
-            <Button variant="contained" style={{
-                borderRadius: 35,
-                backgroundColor: "#21b6ae",
-                padding: "18px 36px",
-                fontSize: "18px",
-                marginBottom: "20px"
-            }} onClick={changeButton}>
-            Time Table
-            </Button>
-            {/* <Link to="/timetable">Go to TimeTable</Link> */}
+        <div>
+            <h1>Employer Page</h1>
+            <Link to="/">Go to MAIN page</Link>
+            <Link to="/timetable">Go to TimeTable</Link>
 
-            <Typography variant="h3" sx={{textAlign:"center", mb:3}}>List of all Employees</Typography>
+            <Typography>List of all employees</Typography>
                 <div className='table'>
                         
                     <DataTable 

@@ -27,6 +27,7 @@ export default function Signin() {
 
 	const {store, dispatch} = useGlobalState()
 
+    const [errorMessage, setErrorMessage] = useState('');
     
 
     let navigate = useNavigate();
@@ -38,36 +39,67 @@ export default function Signin() {
         })
     }
 
+    
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        loginUser(formState).then((data) => {
-            let displayName = data.displayName;
-            let token = data.idToken;
-            let userClaims = data.claims
-            //setItem sets values in sessionStorage started when the webPage is loaded
-            sessionStorage.setItem("idToken", token);
-            sessionStorage.setItem("displayName", displayName);
-            console.log("SIGN IN DATA is: ",data)
-            sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+        try {
+            if (!formState.email || !formState.password) {
+                setErrorMessage('Email and password are required fields.');
+                
+            }
+            else {
+                loginUser(formState)
+                .then((data) => {
+                    console.log("DATAAA ISSS",data)
+                    console.log(!!data.error)
+                    if (!!data.error == true){
+                        console.error("data.error.code is: ",data.error.code)
+                        return setErrorMessage("Email or Password are invalid")
+                        
+                        
+                    }
+                    
+                    let displayName = data.displayName;
+                    let token = data.idToken;
+                    let userClaims = data.claims
+                    //setItem sets values in sessionStorage started when the webPage is loaded
+                    sessionStorage.setItem("idToken", token);
+                    sessionStorage.setItem("displayName", displayName);
+                    console.log("SIGN IN DATA is: ",data)
+                    sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+                    
+                    
+                    // dispatch is to set values in store(initialState)
+                    dispatch({ type: "setLoggedInUser", data: displayName });
+                    dispatch({ type: "setToken", data: token });
+                    console.log("Dispatching UserClaims Data Reducer")
+                    dispatch({ type: "setUserClaims", data: userClaims });
+                    
+                    if (userClaims.adminUser === true) {
+                        console.log (`You're being redirected to admin page`)
+                        navigate("/employer")
+                    } else if (userClaims.regularUser === true) {
+                        console.log (`You're being redirected to Employee page`)
+                        navigate("/employee")
+                    } 
+                 
+                }) .catch((error) => {
+                    setErrorMessage(error.code)
+                    console.error("ERROR IS",error)                    
+                })      
+                             
+            }
+                    
+
+                    
+        } catch(error){
+            console.error(error);
             
             
-            // dispatch is to set values in store(initialState)
-            dispatch({ type: "setLoggedInUser", data: displayName });
-            dispatch({ type: "setToken", data: token });
-            console.log("Dispatching UserClaims Data Reducer")
-            dispatch({ type: "setUserClaims", data: userClaims });
-            
-            if (userClaims.adminUser === true) {
-                console.log (`You're being redirected to admin page`)
-                navigate("/employer")
-            } else if (userClaims.regularUser === true) {
-                console.log (`You're being redirected to Employee page`)
-                navigate("/employee")
-            } 
-            
-        })
+        }
         
-        .catch((error) => console.log(error));        
+           
     };
 
     // useEffect(() => {
@@ -148,7 +180,7 @@ export default function Signin() {
                 </Grid>
             </Box>
             </Box>
-            
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         </Container>
         </ThemeProvider>
     );

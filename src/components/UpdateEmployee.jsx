@@ -28,7 +28,8 @@ export default function UpdateEmployee() {
         Friday: '',
         Saturday: '',
         Sunday: '', 
-        TotalHours: ''
+        TotalHours: '',
+        TotalBreak: ''
 	}
 
     // to update form text value
@@ -72,6 +73,11 @@ export default function UpdateEmployee() {
         event.preventDefault()
         navigate(`/check-employee/${id}`)
     }
+
+    function changeButton(event) {
+        event.preventDefault()
+        navigate(`/employer`)
+    }
     
     const theme = createTheme();
 
@@ -79,12 +85,27 @@ export default function UpdateEmployee() {
     return (
 
 
-        <div>
+        <div style= {{        
+            display: 'flex',
+            flexWrap: 'wrap',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
             <h3>Update Employee Roster</h3>
             <h3>Employee Name: {user.name}</h3>
             <h3>Employee ID: {id}</h3>
-            <Link to="/">Go to MAIN page</Link>
-            <Link to="/employer">Go to Employer page</Link>
+            <Button variant="contained" color="success" style={{
+                borderRadius: 35,
+                backgroundColor: "#ff8791",
+                padding: "18px 36px",
+                fontSize: "18px",
+                margin: "30px"
+            }} onClick={changeButton}>
+            Main Page
+            </Button>
+            {/* <Link to="/">Go to MAIN page</Link> */}
+            {/* <Link to="/employer">Go to Employer page</Link> */}
             <Typography component="h1" variant="h5" sx={{
                         marginTop: 8,
                         mb:4,
@@ -96,26 +117,36 @@ export default function UpdateEmployee() {
             </Typography>
 
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
+                <Container component="main" maxWidth="xs" sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-around',
+                        alignContent: 'center'
+                    }}>
                     <CssBaseline />
+
                     <Box
                     sx={{
-                        mr:3,
-                        mb:10,
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
                         alignItems: 'center',
+                        justifyContent: 'space-between',
+                        
                     }}
-                    >   <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
-                            Week Period: 
+                    >   
+                     
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
+                        Week Period: 
                         </Typography>
                         <Box component="form" noValidate >
                             <Grid container spacing={2}>
                                 <Grid item xs={12} >
                                     <TextField
                                     name="WeekPeriod"
-                                   
+                                
                                     value={formState.WeekPeriod}
                                     onChange={handleChange}
                                     label="Enter new WeekPeriod"
@@ -123,10 +154,12 @@ export default function UpdateEmployee() {
                                     />
                                 </Grid>
                             </Grid>
-                        </Box>
                         
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        </Box>
+                    
+                    
+                    
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Monday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -144,9 +177,10 @@ export default function UpdateEmployee() {
                                 </Grid>
                             </Grid>
                         </Box>
+                        
+                        
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Tuesday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -164,8 +198,7 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Wednesday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -183,8 +216,7 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Thursday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -202,8 +234,7 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Friday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -221,8 +252,7 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Saturday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -240,8 +270,7 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
                             Sunday: 
                         </Typography>
                         <Box component="form" noValidate >
@@ -259,9 +288,8 @@ export default function UpdateEmployee() {
                             </Grid>
                         </Box>
 
-                        <Typography component="h1" variant="h5" sx={{
-                        mr:3,}}>
-                            Total Hours: 
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
+                            Total Work: 
                         </Typography>
                         <Box component="form" noValidate >
                             <Grid container spacing={2}>
@@ -279,35 +307,53 @@ export default function UpdateEmployee() {
                         </Box>
 
                         
+
+                        <Typography component="h1" variant="h5" sx={{ m: 3}}>
+                           Total Break: 
+                        </Typography>
+                        <Box component="form" noValidate >
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} >
+                                    <TextField
+                                    name="TotalBreak"
+                                    
+                                    
+                                    value={formState.TotalBreak}
+                                    onChange={handleChange}
+                                    label="Enter new hours"
+                                    autoFocus
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Box>
+
+                        
+
+                        
                     </Box>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        sx={{ mt: 3, mr: 2, mb: 5, ml: 3 }}
+                        
+                        onClick={handleSubmit}
+                        >
+                        Confirm Update
+                    </Button>
+                    
+                    <Button 
+                        color="primary" 
+                        variant="outlined" 
+                        sx={{ mt: 3, mr: 3, mb: 5, ml: 2 }}
+                        onClick={cancelButton}
+                        >
+                        Cancel
+                    </Button>
                 </Container>
-            </ThemeProvider>
-
-
-
-
+            </ThemeProvider>            
 
             
-
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={handleSubmit}
-                >
-                Confirm Update
-            </Button>
-            <ThemeProvider theme={theme}>
-                <Button 
-                    color="primary" 
-                    variant="outlined" 
-                    startIcon={<DeleteIcon />} 
-                    sx={{ mt: 3, mb: 2 }}
-                    onClick={cancelButton}
-                    >
-                    Cancel
-                </Button>
-            </ThemeProvider>
+            
             
             
 

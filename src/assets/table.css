@@ -1,0 +1,15 @@
+
+
+.rdt_TableCell {
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  
+}
+
+.rdt_TableCell:first-child {
+  background-color: grey;
+  color: #fff;
+  max-width: 0%;
+  text-align: "center";
+ 
+}

@@ -1,4 +1,4 @@
-import { Typography,  Grid } from "@mui/material";
+import { div,  Grid } from "@mui/material";
 import React, {useEffect, useState} from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser, MatchMongoUser } from "../services/authServices";
@@ -9,6 +9,7 @@ import { useGlobalState } from "../utils/stateContext";
 import HoursDiagram  from "../userpage/HoursDiagram";
 import Rectangle from '../userpage/Rectangle'
 
+import '../assets/rectangle.css'
 
 
 export default function EmployeePage () {
@@ -60,11 +61,25 @@ export default function EmployeePage () {
     
     return (
         
-        <div>
+        <div style={{
+            borderRadius: 35,
+            backgroundColor: "#f7f2c6",
+            padding: "18px 25px 50px",
+            fontSize: "18px",
+            margin: "30px"
+        }}>
             
-            <h1>Employee Page</h1>
-            <h3>Employee Name: {displayName}</h3>
-            <h3>Employee ID: {user._id}</h3>
+            <h1 style={{
+                borderRadius: 35,
+                backgroundColor: "#21b6ae",
+                padding: "18px 36px",
+                fontSize: "25px",
+                marginBottom: "20px",
+                maxWidth: '14%',
+                textAlign: 'center'
+            }}>Employee Page</h1>
+            <h3 className="smallHeader">Employee Name: {displayName}</h3>
+            <h3 className="smallHeader">Employee ID: {user._id}</h3>
             {/* <h3>Employee Firebase ID: {userClaims.user_id}</h3> */}
             <h3>Week Period: {user.WeekPeriod}</h3>
             {/* <Link to="/">Go to MAIN page</Link>
@@ -74,17 +89,17 @@ export default function EmployeePage () {
                     
                     Object.entries(user).map(([k,v], i) => [
                         // i===0 &&
-                        // <Typography key={i}>   
+                        // <div key={i}>   
                         // {/* IMPORTANT: 
                         // 1.This "ID" Originally was _id, so please use the original key to modify
                         // 2. number {1} to {9} are only for display purposes and original index identifer was {i}. ie. {1} actually 0 ( i=== 0 ). */}
                         //     {/* {1}. {"ID"} : {v} */}
-                        // </Typography>,
+                        // </div>,
 
                         // i===1 &&
-                        // <Typography key={i}>                            
+                        // <div key={i}>                            
                         //     {2}. {k} : {v}
-                        // </Typography>,
+                        // </div>,
 
                         
                         // <div>
@@ -93,61 +108,68 @@ export default function EmployeePage () {
                        
                         
                         i===4 &&
-                        <Typography margin={"10px"} key={i}>                     
+                        <div className="rectangle" key={i}>                     
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#D9D9D9"/>
                         </div>          
                             {/* {4}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===5 &&
-                        <Typography margin={"10px"} key={i}>                   
+                        <div className="rectangle" key={i}>                   
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#D9D9D9"/>
                         </div>            
                             {/* {5}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===6 &&
-                        <Typography margin={"10px"} key={i}>                     
+                        <div className="rectangle" key={i}>                     
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#D9D9D9"/>
                         </div>          
                             {/* {6}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===7 &&
-                        <Typography margin={"10px"} key={i}>                        
+                        <div className="rectangle" key={i}>                        
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#D9D9D9"/>
                         </div>       
                             {/* {7}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===8 &&
-                        <Typography margin={"10px"} key={i}>                      
+                        <div className="rectangle" key={i}>                      
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#D9D9D9"/>
                         </div>         
                             {/* {8}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===9 &&
-                        <Typography margin={"10px"} key={i}>                     
+                        <div className="rectangle" key={i}>                     
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#a9d1ff"/>
                         </div>          
                             {/* {9}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===10 &&
-                        <Typography margin={"10px"} key={i}>                     
+                        <div className="rectangle" key={i}>                     
                         <div>
                             <Rectangle text1={k} text2="SHIFT" text3={v} color="#a9d1ff"/>
                         </div>          
                             {/* {10}. {k} : {v} */}
-                        </Typography>,
+                        </div>,
                         i===11 &&
-                        <Typography margin={"10px"} key={i}>                     
+                        <div className="rectangle" key={i}>                     
                         <div>
                             <Rectangle text1={"Total Hours"} text2="" text3={v} color="#D9D9D9"/>
                         </div>          
                             {/* {10}. {k} : {v} */}
-                        </Typography>
+                        </div>,
+                        i===12 &&
+                        <div className="rectangle" key={i}>                     
+                        <div>
+                            <Rectangle text1={"Total Break"} text2="" text3={v} color="#D9D9D9"/>
+                        </div>          
+                            {/* {10}. {k} : {v} */}
+                        </div>
                         
                        
                         

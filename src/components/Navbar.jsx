@@ -81,7 +81,7 @@ function Navbar() {
         console.log(event.target.name)
         switch(event.target.name){
             case 'home':
-                navigate('/')
+                navigate('/employer')
                 console.log("Navigate to home page")
                 break;
             case 'about':
@@ -96,7 +96,19 @@ function Navbar() {
 
 
   return (
-    <AppBar position="static" style={{backgroundColor:'black'}}>
+    <AppBar sx={{
+      
+      
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: '100%',
+      height: 'auto',
+      justifyContent: 'center',
+      backgroundColor: "#28a3d4",
+      position: 'static'
+      
+      
+    }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters >
         {/* <div style={{backgroundColor:'black', display: "flex", flexWrap:'wrap', flexDirection:"row", alignItems: "center", justifyContent: "space-between"}}>
@@ -119,11 +131,11 @@ function Navbar() {
               textDecoration: "none"
             }}
           >
-            Roster
+            Roster Portal
           </Typography>
                 
-                
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                {/* I think this one is for hamburger menu */}
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -158,9 +170,9 @@ function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
 
-          <Typography
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -177,7 +189,7 @@ function Navbar() {
             }}
           >
             Roster
-          </Typography>
+          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -192,14 +204,94 @@ function Navbar() {
           </Box>
 
 
-            {/* Edit this for hi employee and signout button */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
+          
+                
+
+              {/* Edit this for hi employee and signout button */}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} >
+            
+              
+
+              <Box sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        height: '100%',
+        width: '100%'
+      }}>
+                <Button color = 'inherit' name='home' onClick={changeButton}>Home</Button>
+                <Button color='inherit' name='about' onClick={changeButton} >About</Button>
+
+              </Box>
+                                
+              <Box sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+        height: '100%',
+        width: '100%'
+      }}>
+
+              {displayName ? 
+                    <>                
+                    <Box >
+                        <Typography component="span" m="{10}">Hi, {displayName} ! </Typography>
+                    </Box>
+                    
+                    <Box >
+                        <Button variant="contained" color='primary' onClick={handleSignOut}>Sign Out</Button>
+                    </Box>
+                    
+                    
+                    </>                    
+                :
+                    <Container sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      justifyContent: 'space-evenly',
+                      height: '100%',
+                      width: '100%'
+                    }}> 
+                    <Button variant="contained" color='primary' onClick={() => navigate('/signup')}>Sign Up</Button>
+                    <Button color='primary' variant="contained" onClick={() => navigate('/signin')}>Sign In</Button> 
+                    </Container>
+                    }
+
+              </Box>
+
+                {/* <Grid container spacing={2}>
+                    
+
+                    {displayName ? 
+                    <>                
+                    <Grid>
+                        <Typography component="span" m="{10}">Hi, {displayName} ! </Typography>
+                    </Grid>
+                    
+                    <Grid style={{ margin: '0px 0px 0px 30px' }}>
+                        <Button variant="contained" color='primary' onClick={handleSignOut}>Sign Out</Button>
+                    </Grid>
+                    
+                    
+                    </>                    
+                :
+                    <Container > 
+                    <Button variant="contained" color='primary' onClick={() => navigate('/signup')}>Sign Up</Button>
+                    <Button color='primary' variant="contained" onClick={() => navigate('/signin')}>Sign In</Button> 
+                    </Container>
+                    }
+                </Grid> */}
+
+
+                
+              
+            
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -220,35 +312,8 @@ function Navbar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
-                
-                {/* <Button color = 'inherit' name='home' onClick={changeButton}>Home</Button>
-                <Button color='inherit' name='about' onClick={changeButton} >About</Button>                
-            
-
-            <Grid container spacing={2}>
-                
-
-                {displayName ? 
-                <>                
-                <Grid>
-                    <Typography component="span" m="{10}">Hi, {displayName} ! </Typography>
-                </Grid>
-                
-                <Grid style={{ margin: '0px 0px 0px 30px' }}>
-                    <Button variant="contained" color='primary' onClick={handleSignOut}>Sign Out</Button>
-                </Grid>
-                
-                
-                </>                    
-            :
-                <Container > 
-                <Button variant="contained" color='primary' onClick={() => navigate('/signup')}>Sign Up</Button>
-                <Button color='primary' variant="contained" onClick={() => navigate('/signin')}>Sign In</Button> 
-                </Container>
-                }
-            </Grid> */}
             
 
         

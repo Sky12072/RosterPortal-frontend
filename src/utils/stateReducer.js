@@ -12,7 +12,8 @@ export default function reducer (state, action) {
                 Friday: action.data,
                 Saturday: action.data,
                 Sunday: action.data,
-                TotalHours: action.data
+                TotalHours: action.data,
+                TotalBreak: action.data
             }
         }
 		case 'setLoggedInUser': {

@@ -13,6 +13,7 @@ import Aboutpage from "./Aboutpage";
 import ShowOneEmployee from "./ShowOneEmployee";
 import UpdateEmployee from "./UpdateEmployee";
 import Navbar from './Navbar'
+import Timetable from "./Timetable";
 
 
 function App() {
@@ -43,9 +44,10 @@ function App() {
   console.log("TYPEOF SESSIONSTORAGE is: ", typeof (sessionStorage.userClaims))
   console.log("SESSIONSTORAGE is: ", sessionStorage.userClaims)
 
-
+    
   return (
     <div>
+      
       <StateContext.Provider value={{store, dispatch}}>
       {/* <Nav /> */}
       <div><Navbar /></div>
@@ -71,6 +73,7 @@ function App() {
 
         <Route path="/check-employee/:id" element={<ShowOneEmployee />} />
         <Route path="/update-employee/:id" element={<UpdateEmployee />} />
+        <Route path="/timetable" element={<Timetable />} />
 
         
       </Routes>
