@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -51,7 +51,7 @@ export default function Signin() {
                 .then((data) => {
                     console.log("DATAAA ISSS",data)
                     console.log(!!data.error)
-                    if (!!data.error == true){
+                    if (!!data.error === true){
                         console.error("data.error.code is: ",data.error.code)
                         return setErrorMessage("Email or Password are invalid")
                     }
@@ -80,12 +80,12 @@ export default function Signin() {
                         navigate("/employee")
                     } 
                  
-                }) .catch((error) => {
+                }).catch((error) => {
                     setErrorMessage(error.code)
                     console.error("ERROR IS",error)                    
                 })           
             }
-        } catch(error){
+        }catch(error){
             console.error(error);
         }
     };

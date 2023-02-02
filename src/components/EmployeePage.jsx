@@ -1,30 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { MatchMongoUser } from "../services/authServices";
-import { createTheme} from '@mui/material/styles';
 import { useGlobalState } from "../utils/stateContext";
 import HoursDiagram  from "../userpage/HoursDiagram";
 import Rectangle from '../userpage/Rectangle'
-
 import '../assets/rectangle.css'
 
 
 export default function EmployeePage () {
 
-    const theme = createTheme({
-    status: {
-        danger: '#e53e3e',
-    },
-    palette: {
-        primary: {
-        main: '#0971f1',
-        darker: '#053e85',
-        },
-        neutral: {
-        main: '#64748B',
-        contrastText: '#fff',
-        },
-    },
-    });
+    
 
     const styles = {        
         display: 'flex',
@@ -34,7 +18,7 @@ export default function EmployeePage () {
 
     
     const {store} = useGlobalState();
-    const {displayName, token, userClaims} = store
+    const {displayName, userClaims} = store
     
 
     // to get user ID value as a page title
@@ -45,7 +29,7 @@ export default function EmployeePage () {
         MatchMongoUser(userClaims.user_id)
         .then(data => setUser(data))
         .catch((error) => console.log(error))
-    }, [])
+    }, [userClaims.user_id])
 
     console.log("getOneMongoUser IS: ",user._id)
     

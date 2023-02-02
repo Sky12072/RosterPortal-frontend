@@ -2,7 +2,6 @@ import { Typography, Button } from "@mui/material";
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getMongoUser } from "../services/authServices";
-import { useGlobalState } from "../utils/stateContext";
 import DataTable from 'react-data-table-component';
 import '../assets/table.css'
 
@@ -13,12 +12,7 @@ export default function EmployerPage () {
     // we don't need useParams here because we don't use it here but we pass the value of mongoUser id as params' value on line 36
     const [users, setUsers] = useState([])
 
-    // const [store, dispatch] = useReducer(reducer, initialState);
-    const {store, dispatch} = useGlobalState();
-    const {userClaims} = store
-    
-    let navigate = useNavigate();
-    
+    let navigate = useNavigate();    
 
     useEffect(() => {
         getMongoUser()

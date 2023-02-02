@@ -1,24 +1,20 @@
 import { useGlobalState } from "../utils/stateContext";
 import { Doughnut } from "react-chartjs-2";
 import React, {useEffect, useState} from "react";
-import { getOneMongoUser, MatchMongoUser } from "../services/authServices";
+import { MatchMongoUser } from "../services/authServices";
 import {Chart, ArcElement, Legend, Tooltip} from 'chart.js'
 Chart.register(ArcElement, Legend, Tooltip);
 
 
-
 const styles = {
-    
     width: '300px',
     height: '300px',
-    
-   
 };
 
 export default function HoursDiagram() {
 
-  const {store, dispatch} = useGlobalState();
-  const {displayName, token, userClaims} = store
+  const {store} = useGlobalState();
+  const {userClaims} = store
 
   // to get user ID value as a page title
   const [user, setUser] = useState([])
@@ -34,7 +30,7 @@ export default function HoursDiagram() {
       MatchMongoUser(userClaims.user_id)
       .then(data => setUser(data))
       .catch((error) => console.log(error))
-  }, [])
+  }, [userClaims.user_id])
 
   console.log("getOneMongoUser IS: ",user._id)
 

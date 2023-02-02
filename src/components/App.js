@@ -22,7 +22,7 @@ function App() {
   }
   const [store, dispatch] = useReducer(reducer, initialState);
   
-  const {userClaims, displayName, idToken} = store
+  const {userClaims, displayName} = store
     
   return (
     <div>

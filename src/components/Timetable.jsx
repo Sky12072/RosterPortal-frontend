@@ -1,8 +1,7 @@
 import DataTable from 'react-data-table-component';
 import React, {useEffect, useState} from "react";
-import { Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import '../assets/table.css'
-import { useGlobalState } from "../utils/stateContext";
 import { getMongoUser } from "../services/authServices";
 import { Button } from "@mui/material";
 
@@ -60,12 +59,7 @@ function Timetable() {
             selector: row => row[0].totalbreak,
         },
     ];
-    users.allEmployees && users.allEmployees.map((person, index) => {
-        console.log("person timetable is: ", person.name)
-        console.log("Index timetable is:", index)
-        console.log("Monday timetable is:", person.Monday)
-    })
-
+   
     const data = users.allEmployees && users.allEmployees.map((person, index) => [
         {
             id: index,

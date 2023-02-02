@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser } from "../services/authServices";
 import { updateMongoUser } from "../services/authServices";
-import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useGlobalState } from "../utils/stateContext";
 import Button from '@mui/material/Button';

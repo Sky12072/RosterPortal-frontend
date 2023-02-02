@@ -9,26 +9,12 @@ import { useNavigate } from "react-router-dom";
 const pages = [];
 
 function Navbar() {
- 
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
 
   
 
   let navigate = useNavigate();
   const {store, dispatch} = useGlobalState();
-  const {displayName, idToken, userClaims} = store
+  const {displayName} = store
 
   // Nav buttons useState
   const [state, setState] = useState(false)
@@ -103,7 +89,7 @@ function Navbar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+               
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
