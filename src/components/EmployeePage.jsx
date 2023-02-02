@@ -1,10 +1,6 @@
-import { div,  Grid } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { getOneMongoUser, MatchMongoUser } from "../services/authServices";
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { MatchMongoUser } from "../services/authServices";
+import { createTheme} from '@mui/material/styles';
 import { useGlobalState } from "../utils/stateContext";
 import HoursDiagram  from "../userpage/HoursDiagram";
 import Rectangle from '../userpage/Rectangle'

@@ -1,8 +1,7 @@
 import { Typography, Button } from "@mui/material";
-import React, {useEffect, useState, useReducer} from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getMongoUser } from "../services/authServices";
-import reducer from "../utils/stateReducer"
 import { useGlobalState } from "../utils/stateContext";
 import DataTable from 'react-data-table-component';
 import '../assets/table.css'
@@ -39,15 +38,12 @@ export default function EmployerPage () {
         {
             name: 'Number',
             selector: row => row[0].id,
-            
         },
         {
             name: 'Name',
-            
             selector: row => (
                 <Link to={`/check-employee/${row[0].uniqueid}`}>{row[0].name}</Link>
             )
-            
         },
         {
             name: 'Unique ID',
@@ -55,21 +51,16 @@ export default function EmployerPage () {
         }
     ];
 
-
     const data = users.allEmployees && users.allEmployees.map((person, index) => [
         {
             id: index,
             name: person.name,
             uniqueid: person._id
-            
         },
         
     ])
-    // Show all employee names
-  
-            
 
-    
+    // Show all employee names
     return (
         <div style={{
             borderRadius: 35,

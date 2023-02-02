@@ -3,15 +3,23 @@
 }
 
 .smallHeader {
-  
-  
   color: #21b6ae;
-  
-  
 }
 
-/* borderRadius: 35,
-background-color "#21b6ae",
-padding: "18px 36px",
-fontSize: "18px",
-marginBottom: "20px" */
+.about {
+    color: #761191;
+    margin: 25px
+}
+
+.image {
+    top: 10px;
+    left: 10px;
+    position:absolute;
+    background-color: antiquewhite;
+    margin: 0px 175px 0px 175px;
+}
+
+.paragraph {
+    color: white;
+
+}
