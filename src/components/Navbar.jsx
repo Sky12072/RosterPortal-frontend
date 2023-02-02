@@ -40,8 +40,7 @@ function Navbar() {
     // console.log(event.target.name)
     switch(event.target.name){
         case 'home':
-            userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')
-            
+            userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')            
             console.log("Navigate to home page")
             break;
         case 'about':
@@ -49,10 +48,10 @@ function Navbar() {
             console.log("Navigate to about page")
             break;
         default:
-            userClaims.regularUser ? navigate('/employer') : navigate('/employee')
-            
+            navigate('/')   
             console.log("Default Switch Case Navbar Executed")
             break;
+            
             
     }
   }

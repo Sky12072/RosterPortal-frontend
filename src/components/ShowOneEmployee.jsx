@@ -94,7 +94,8 @@ export default function ShowOneEmployee () {
                 console.log("Navigate to timetable page")
                 break;
             default:
-                userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')          
+                // userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')    
+                navigate('/')        
                 console.log("Default Switch Case Show One Employee Executed")
                 break;
         }
