@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser } from "../services/authServices";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,16 +30,10 @@ export default function ShowOneEmployee () {
 
     let navigate = useNavigate();
 
-    
-
     // to get user ID value as a page title
     const [user, setUser] = useState([])
 
-
     const {id} = useParams()
-
-    
-    
 
     // to get user ID value as a page title
     useEffect(() => {
@@ -47,8 +41,6 @@ export default function ShowOneEmployee () {
         .then(data => setUser(data))
         .catch((error) => console.log(error))
     }, [id])
-   
-    console.log("Show 1 employee IS: ",user)
     
 
     const columns = [

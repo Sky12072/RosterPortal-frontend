@@ -8,10 +8,7 @@ import { Button } from "@mui/material";
 
 function Timetable() {
     const [users, setUsers] = useState([])
-    const {store, dispatch} = useGlobalState();
-    const {userClaims} = store
-
-    // console.log ('Users timetable: ', users)
+    
     let navigate = useNavigate();
     
 

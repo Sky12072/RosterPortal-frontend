@@ -100,16 +100,7 @@ export default function Signup () {
                                 autoFocus
                                 />
                             </Grid>
-                            {/* <Grid item xs={12} sm={6}>
-                                <TextField
-                                required
-                                fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                name="lastName"
-                                autoComplete="family-name"
-                                />
-                            </Grid> */}
+                           
                             <Grid item xs={12}>
                                 <TextField
                                 required
@@ -132,23 +123,7 @@ export default function Signup () {
                                 onChange={handleChange}
                                 />
                             </Grid>
-                            {/* <Grid item xs={12}>
-                                <TextField
-                                required
-                                fullWidth
-                                name="password_confirmation"
-                                label="Confirm Password"
-                                type="password"
-                                value={formState.password_confirmation}                  
-                                onChange={handleChange}
-                                />
-                            </Grid> */}
-                            {/* <Grid item xs={12}>
-                                <FormControlLabel
-                                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
-                            </Grid> */}
+                           
                         </Grid>
                             <Button
                             type="submit"

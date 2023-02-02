@@ -31,9 +31,6 @@ export default function EmployerPage () {
         navigate(`/timetable`)
     }
 
-    console.log("USERS ARE: ",users.allEmployees)
-    console.log("USERS TYPE IS: ",typeof users.allEmployees)
-    
     const columns = [
         {
             name: 'Number',
@@ -69,8 +66,7 @@ export default function EmployerPage () {
             fontSize: "18px",
             margin: "30px"
         }}>
-            {/* <h1>Employer Page</h1> */}
-            {/* <Link to="/">Go to MAIN page</Link> */}
+           
             <Button variant="contained" style={{
                 borderRadius: 35,
                 backgroundColor: "#21b6ae",
@@ -80,7 +76,6 @@ export default function EmployerPage () {
             }} onClick={changeButton}>
             Time Table
             </Button>
-            {/* <Link to="/timetable">Go to TimeTable</Link> */}
 
             <Typography variant="h3" sx={{textAlign:"center", mb:3}}>List of all Employees</Typography>
                 <div className='table'>

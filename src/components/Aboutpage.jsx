@@ -21,7 +21,7 @@ export default function Aboutpage () {
         }}>
             <img
             src= {unsplash}
-            alt="Image"
+            alt="unsplash"
             style={{width: '40%', opacity: 0.5}}
             />
             <div className="image">

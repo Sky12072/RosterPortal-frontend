@@ -25,7 +25,7 @@ export default function Signin() {
 	}
 	const [formState, setFormState] = useState(initialFormState)
 
-	const {store, dispatch} = useGlobalState()
+	const {dispatch} = useGlobalState()
 
     const [errorMessage, setErrorMessage] = useState('');
     
@@ -38,8 +38,6 @@ export default function Signin() {
             [event.target.name]: event.target.value
         })
     }
-
-    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -56,8 +54,6 @@ export default function Signin() {
                     if (!!data.error == true){
                         console.error("data.error.code is: ",data.error.code)
                         return setErrorMessage("Email or Password are invalid")
-                        
-                        
                     }
                     
                     let displayName = data.displayName;
@@ -87,29 +83,14 @@ export default function Signin() {
                 }) .catch((error) => {
                     setErrorMessage(error.code)
                     console.error("ERROR IS",error)                    
-                })      
-                             
+                })           
             }
-                    
-
-                    
         } catch(error){
             console.error(error);
-            
-            
         }
-        
-           
     };
 
-    // useEffect(() => {
-    //     if (typeof sessionStorage.userClaims === 'string') {
-    //         sessionStorage.setItem("userClaims", JSON.parse(userClaims));
-    //     //   dispatch('setUserClaims', JSON.parse(sessionStorage.userClaims));
-    //     //   dispatch('setUserClaims', JSON.parse(userClaims));
-    //     }
-    //   }, []);
-
+   
     const theme = createTheme();
 
     return (

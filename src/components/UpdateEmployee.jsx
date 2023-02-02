@@ -1,23 +1,17 @@
 import { Typography } from "@mui/material";
 import React, {useEffect, useState} from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getOneMongoUser } from "../services/authServices";
 import { updateMongoUser } from "../services/authServices";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useGlobalState } from "../utils/stateContext";
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
 import Container from '@mui/material/Container';
-
-
 
 export default function UpdateEmployee() {
     const initialFormState = {
@@ -104,8 +98,7 @@ export default function UpdateEmployee() {
             }} onClick={changeButton}>
             Main Page
             </Button>
-            {/* <Link to="/">Go to MAIN page</Link> */}
-            {/* <Link to="/employer">Go to Employer page</Link> */}
+            
             <Typography component="h1" variant="h5" sx={{
                         marginTop: 8,
                         mb:4,
@@ -350,14 +343,7 @@ export default function UpdateEmployee() {
                         Cancel
                     </Button>
                 </Container>
-            </ThemeProvider>            
-
-            
-            
-            
-            
-
-            
+            </ThemeProvider>           
 
         </div>
     )
