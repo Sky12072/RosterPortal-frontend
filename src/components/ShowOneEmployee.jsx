@@ -86,6 +86,10 @@ export default function ShowOneEmployee () {
                 navigate('/timetable')
                 console.log("Navigate to timetable page")
                 break;
+            default:
+                navigate('/employer')
+                console.log("Default Switch Case Show One Employee Executed")
+                break;
         }
     }
 

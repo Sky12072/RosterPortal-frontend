@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Typography from '@mui/material/Typography';
 import { AppBar, Button, Toolbar, Box, Container} from '@mui/material'
 import { useGlobalState } from "../utils/stateContext";
@@ -17,12 +17,12 @@ function Navbar() {
   const {displayName} = store
 
   // Nav buttons useState
-  const [state, setState] = useState(false)
+  // const [state, setState] = useState(false)
 
   function handleSignOut(event) {
     event.preventDefault()  
     logoutUser(displayName)
-    .then((data) => {
+    .then(() => {
     dispatch({type: 'setLoggedInUser', data: null})
     dispatch({type: 'setToken', data: null})
     dispatch({type: 'setUserClaims', data: null})
@@ -33,9 +33,9 @@ function Navbar() {
 
   function changeButton(event) {
     event.preventDefault()
-    setState(prevState => !prevState)
-    console.log("Button Clicked")
-    console.log(event.target.name)
+    // setState(prevState => !prevState)
+    // console.log("Button Clicked")
+    // console.log(event.target.name)
     switch(event.target.name){
         case 'home':
             navigate('/employer')
@@ -44,6 +44,10 @@ function Navbar() {
         case 'about':
             navigate('/about')
             console.log("Navigate to about page")
+            break;
+        default:
+            navigate('/employer')
+            console.log("Default Switch Case Navbar Executed")
             break;
     }
   }
