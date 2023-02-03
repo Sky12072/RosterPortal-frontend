@@ -82,7 +82,13 @@ export default function ShowOneEmployee () {
        
         switch(event.target.name){
             case 'home':
-                userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')            
+                if (userClaims && userClaims.adminUser===true) {
+                    navigate('/employer')
+                } else if (userClaims && userClaims.adminUser===false) {
+                navigate('/employee') 
+                } else {
+                navigate('/')  
+                }            
                 console.log("Navigate to home page")
                 break;
             case 'update':
@@ -93,8 +99,7 @@ export default function ShowOneEmployee () {
                 navigate('/timetable')
                 console.log("Navigate to timetable page")
                 break;
-            default:
-                // userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')    
+            default:                   
                 navigate('/')        
                 console.log("Default Switch Case Show One Employee Executed")
                 break;

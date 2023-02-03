@@ -16,7 +16,7 @@ function Navbar() {
   const {store, dispatch} = useGlobalState();
   const {displayName, userClaims} = store
 
-  console.log ("Store Navbar is: ", userClaims)
+  console.log ("Store Navbar is: ", store)
 
   // Nav buttons useState
   // const [state, setState] = useState(false)
@@ -40,7 +40,13 @@ function Navbar() {
     // console.log(event.target.name)
     switch(event.target.name){
         case 'home':
-            userClaims.adminUser===true ? navigate('/employer') : navigate('/employee')            
+            if (userClaims && userClaims.adminUser===true) {
+              navigate('/employer')
+            } else if (userClaims && userClaims.regularUser===true) {
+              navigate('/employee') 
+            } else {
+              navigate('/')  
+            }          
             console.log("Navigate to home page")
             break;
         case 'about':
