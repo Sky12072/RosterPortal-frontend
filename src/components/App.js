@@ -12,6 +12,7 @@ import ShowOneEmployee from "./ShowOneEmployee";
 import UpdateEmployee from "./UpdateEmployee";
 import Navbar from './Navbar'
 import Timetable from "./Timetable";
+import Mainpage from "./Mainpage"
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
       
       <Routes>
         {/* This don't display anything on the web, because all content that displays coming from Mainpage component. So this part is purely to set the route path of each component */}
-        
+        <Route path="/" element={<Mainpage />} />
         {/* This signup path is allocating url path for signup component, not the signup button */}
         <Route path='/signup' element={<Signup />}/>
         <Route path='/signin' element={<Signin />}/>
