@@ -21,7 +21,7 @@ Employees can view their work rosters and know their shifts, without having to w
 
 On the other hand, employers have the power to easily schedule their employees, ensuring that shifts are covered, and no one is overworked. With the ability to view real-time updates, they can also make any necessary changes quickly and efficiently. This streamlines the scheduling process and reduces the risk of errors.
 
-#Accounts
+# Accounts
 
 For demo purposes you can sign up as an emmployee with any email address.
 
@@ -47,21 +47,23 @@ password: password123
 # Tech Stack
 Front-end:
 
-HTML
-JavaScript
-CSS
-React
+- HTML
+- JavaScript
+- CSS
+- React
 
 Back-end:
-Express
-Node.js
+
+- Express
+- Node.js
 
 Database:
-MongoDB
+
+- MongoDB
 
 Deployment:
-Netlify
-Heroku
+- Netlify
+- Heroku
 
 
 # Libraries and Dependencies
