@@ -2,69 +2,64 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Important Links
+Deployed frontend and backend urls:
 
-In the project directory, you can run:
+Front-end React: https://rosterportal-frontend-fullstack.netlify.app
 
-### `npm start`
+Back-end Expressjs: https://easyportal-heroku.herokuapp.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Front-end Repository: https://github.com/Sky12072/RosterPortal-frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Back-end Repository: https://github.com/EasyPortal-Business-Management-System/EasyPortal-Express
 
-### `npm test`
+# About Roster Portal
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ A work portal website provides a centralized platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
 
-### `npm run build`
+Employees can view their work rosters and know their shifts, without having to waste time contacting their managers or HR department. This allows them to plan their personal lives better and manage their time more effectively.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On the other hand, employers have the power to easily schedule their employees, ensuring that shifts are covered, and no one is overworked. With the ability to view real-time updates, they can also make any necessary changes quickly and efficiently. This streamlines the scheduling process and reduces the risk of errors.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Tech Stack
+Front-end:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+HTML
+JavaScript
+CSS
+React
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Back-end:
+Express
+Node.js
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Database:
+MongoDB
 
-## Learn More
+Deployment:
+Netlify
+Heroku
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Libraries and Dependencies
 
-### Code Splitting
+Front-end Libraries and Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. React Chartjs
+2. React Data Table Component
+3. React Donut Chart
+4. React SVG
+5. Material UI
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Server Libraries and Dependencies
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. CORS
+2. Dotenv
+3. Expressjs
+4. Firebase
+5. Helmet
+6. Mongoose
