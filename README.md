@@ -36,13 +36,13 @@ However to access a employer account, you may sign up with any of these accounts
 
 or to directly sign in as Employer you may use the detail below:
 
-email: employer@admin.com
-password: password123
+- email: employer@admin.com
+- password: password123
 
 and to directly sign in as Employee you may use the detail below:
 
-email: jen@client.com  
-password: password123
+- email: jen@client.com  
+- password: password123
 
 # Tech Stack
 Front-end:
