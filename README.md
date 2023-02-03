@@ -85,3 +85,5 @@ Server Libraries and Dependencies
 4. Firebase
 5. Helmet
 6. Mongoose
+
+For any queries, feel free to contact me via www.timotiusmogot.com
