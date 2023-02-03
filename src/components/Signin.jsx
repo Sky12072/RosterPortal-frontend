@@ -119,6 +119,7 @@ export default function Signin() {
                 
                 label="Email Address"
                 name="email"
+                type="email"
                 value={formState.email}
                 onChange={handleChange}
                 autoFocus

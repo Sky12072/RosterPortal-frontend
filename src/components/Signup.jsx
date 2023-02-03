@@ -25,6 +25,7 @@ export default function Signup () {
     const [formState, setFormState] = useState(initialFormState)
     const {dispatch} = useGlobalState();
     let navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
     function handleChange(event) {
         setFormState({
@@ -35,32 +36,51 @@ export default function Signup () {
 
     function handleSubmit (event) {
         event.preventDefault();
-        registerUser(formState).then((data) => {
-            let displayName = data.displayName;
-            let token = data.idToken;
-            let userClaims = data.claims
-            //setItem sets values in sessionStorage started when the webPage is loaded
-            sessionStorage.setItem("idToken", token);
-            sessionStorage.setItem("displayName", displayName);
-            console.log("SIGN UP DATA is: ",data)
-            sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
-            
-            
-            // dispatch is to set values in store(initialState)
-            dispatch({ type: "setLoggedInUser", data: displayName });
-            dispatch({ type: "setToken", data: token });
-            console.log("Dispatching UserClaims Data Reducer")
-            dispatch({ type: "setUserClaims", data: userClaims });
+        try {
+            if (!formState.email || !formState.password || !formState.displayName) {
+                setErrorMessage('Name, Email and password are required fields.');
+                
+            }
+            else {
+                registerUser(formState)
+                .then((data) => {
+                    let displayName = data.displayName;
+                    let token = data.idToken;
+                    let userClaims = data.claims
+                    if (!!data.error === true){
+                        console.error("data.error.code is: ",data.error.code)
+                        return setErrorMessage("Email or Password is invalid")
+                    }
+                    //setItem sets values in sessionStorage started when the webPage is loaded
+                    sessionStorage.setItem("idToken", token);
+                    sessionStorage.setItem("displayName", displayName);
+                    console.log("SIGN UP DATA is: ",data)
+                    sessionStorage.setItem("userClaims", JSON.stringify(userClaims));
+                    
+                    
+                    // dispatch is to set values in store(initialState)
+                    dispatch({ type: "setLoggedInUser", data: displayName });
+                    dispatch({ type: "setToken", data: token });
+                    console.log("Dispatching UserClaims Data Reducer")
+                    dispatch({ type: "setUserClaims", data: userClaims });
 
-            if (userClaims.adminUser === true) {
-                console.log (`You're being redirected to admin page`)
-                navigate("/employer")
-            } else if (userClaims.regularUser === true) {
-                console.log (`You're being redirected to Employee page`)
-                navigate("/employee")
-            } 
-        })
-        .catch((error) => console.log(error)); 
+                    if (userClaims.adminUser === true) {
+                        console.log (`You're being redirected to admin page`)
+                        navigate("/employer")
+                    } else if (userClaims.regularUser === true) {
+                        console.log (`You're being redirected to Employee page`)
+                        navigate("/employee")
+                    } 
+                }).catch((error) => {
+                    setErrorMessage(error.code)
+                    console.error("ERROR IS",error)                    
+                }
+            )}
+            
+            
+        }catch(error){
+            console.error("ERROR IS: ", error);
+        }
     };
         
     
@@ -105,7 +125,7 @@ export default function Signup () {
                                 <TextField
                                 required
                                 fullWidth
-                                
+                                type="email"
                                 label="Email Address"
                                 name="email"
                                 value={formState.email}
@@ -143,7 +163,7 @@ export default function Signup () {
                         </Grid>
                     </Box>
                     </Box>
-                    
+                    {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 </Container>
             </ThemeProvider>
         </>
