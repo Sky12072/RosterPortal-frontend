@@ -21,8 +21,28 @@ Employees can view their work rosters and know their shifts, without having to w
 
 On the other hand, employers have the power to easily schedule their employees, ensuring that shifts are covered, and no one is overworked. With the ability to view real-time updates, they can also make any necessary changes quickly and efficiently. This streamlines the scheduling process and reduces the risk of errors.
 
+#Accounts
 
+For demo purposes you can sign up as an emmployee with any email address.
 
+However to access a employer account, you may sign up with any of these accounts below:
+
+1. production@admin.com
+2. production1@admin.com
+3. production2@admin.com
+4. production3@admin.com
+5. production4@admin.com
+6. production5@admin.com
+
+or to directly sign in as Employer you may use the detail below:
+
+email: employer@admin.com
+password: password123
+
+and to directly sign in as Employee you may use the detail below:
+
+email: jen@client.com  
+password: password123
 
 # Tech Stack
 Front-end:
