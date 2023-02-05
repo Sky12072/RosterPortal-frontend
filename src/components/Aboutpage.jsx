@@ -43,6 +43,12 @@ export default function Aboutpage () {
                 On Roster Portal, Employer can view the timetable of the employees work schedule in that week. Employer also can roster an employee by updating the employees' schedule on update page but this can only be done when viewing an individual worker by clicking their name. Employer as an admin also able to delete an employee data. Employee can only view their roster.
 
                 </Typography>
+
+
+                <Typography sx={{ m:3, color:'#21b6ae'}}>
+                Further details about signing up as employer or employee can be found at 
+                <a style={{ textDecoration: 'none' }} href="https://github.com/Sky12072/RosterPortal-frontend"> github repo.</a>
+                </Typography>
             </div>
            
         </div>
