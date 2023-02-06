@@ -29,7 +29,7 @@ export default function Aboutpage () {
                 {/* <Link to="/employer">Go to Employer page</Link>
                 <Link to="/employee">Go to Employee page</Link> */}
                 <Typography sx={{ m:3, color:'#21b6ae'}}>
-                A work portal website provides a centralized platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
+                A work portal website provides a centralised platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
                 </Typography>
                 <Typography  sx={{ m:3, color:'#21b6ae'}}>
                 Employees can view their work rosters and know their shifts, without having to waste time contacting their managers or HR department. This allows them to plan their personal lives better and manage their time more effectively.
