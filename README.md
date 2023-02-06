@@ -5,9 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Important Links
 Deployed frontend and backend urls:
 
-Front-end React: https://rosterportal-frontend-fullstack.netlify.app
+Front-end Page React: https://rosterportal-frontend-fullstack.netlify.app
 
-Back-end Expressjs: https://easyportal-heroku.herokuapp.com/
+Back-end Page Expressjs: https://easyportal-heroku.herokuapp.com/
 
 Front-end Repository: https://github.com/Sky12072/RosterPortal-frontend
 
@@ -15,7 +15,7 @@ Back-end Repository: https://github.com/EasyPortal-Business-Management-System/Ea
 
 # About Roster Portal
 
-A work portal website provides a centralized platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
+A work portal website provides a centralised platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
 
 Employees can view their work rosters and know their shifts without having to waste time contacting their managers or HR department. This allows them to plan their personal lives better and manage their time more effectively.
 
