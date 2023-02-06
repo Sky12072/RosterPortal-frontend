@@ -17,15 +17,15 @@ Back-end Repository: https://github.com/EasyPortal-Business-Management-System/Ea
 
  A work portal website provides a centralized platform where employees can easily access their work schedules, while employers can efficiently manage their workforce. This eliminates the need for manual communication and ensures that everyone is on the same page.
 
-Employees can view their work rosters and know their shifts, without having to waste time contacting their managers or HR department. This allows them to plan their personal lives better and manage their time more effectively.
+Employees can view their work rosters and know their shifts without having to waste time contacting their managers or HR department. This allows them to plan their personal lives better and manage their time more effectively.
 
 On the other hand, employers have the power to easily schedule their employees, ensuring that shifts are covered, and no one is overworked. With the ability to view real-time updates, they can also make any necessary changes quickly and efficiently. This streamlines the scheduling process and reduces the risk of errors.
 
 # Accounts
 
-For demo purposes you can sign up as an emmployee with any email address.
+For demo purposes you can sign up as an employee with any email address.
 
-However to access a employer account, you may sign up with any of these accounts below:
+However to access an employer account, you may Sign-Up with any of these accounts below:
 
 1. production@admin.com
 2. production1@admin.com
